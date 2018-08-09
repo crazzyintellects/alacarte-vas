@@ -8,4 +8,5 @@ const App = () => {
     );
   }
 console.log('test');
+console.log('checkin-works');
 export default App;
