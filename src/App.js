@@ -7,5 +7,5 @@ const App = () => {
       <HeaderNav />
     );
   }
-
+console.log('test');
 export default App;
