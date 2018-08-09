@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "build": "rimraf dist && webpack --config webpack.prod.config.js --progress --profile --color"
   },
-  "author": "Sir D Namaskar",
+  "author": "Sir D Namaskar Sir",
   "devDependencies": {
     "autoprefixer": "^9.1.0",
     "babel-core": "^6.26.3",
