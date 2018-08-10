@@ -69,7 +69,7 @@ const cardData = [
         statementBal: '210.78',
         avlCredit: '339.23',
         payDueDt: 'September 15',
-        minDue: '10'
+        minDue: '10.00'
     },
     {
         img: '../../src/assets/platinum-delta-skymiles.png',

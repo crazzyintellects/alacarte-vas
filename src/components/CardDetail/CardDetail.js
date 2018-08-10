@@ -37,14 +37,14 @@ function CardDetail(props) {
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                        {props.statementBal}
+                        $ {props.statementBal}
           </Typography>
                     <Typography variant="caption" component="h3">
                         Available Credit
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                    {props.avlCredit}
+                    $ {props.avlCredit}
           </Typography>
                     <Typography variant="caption" component="h5">
                         Your Payment is Due on
@@ -58,7 +58,7 @@ function CardDetail(props) {
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                    {props.minDue}
+                    $ {props.minDue}
           </Typography>
                 </CardContent>
                 <CardActions>
