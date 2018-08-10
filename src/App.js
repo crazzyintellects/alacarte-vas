@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import HeaderNav from './components/HeaderNav';
+import Layout from '../src/containers/Layout/Layout';
+
 
 const App = () => {
     return (
-      <HeaderNav />
+      <div>
+        <Layout>
+        </Layout>
+      </div>
     );
   }
-console.log('test');
-console.log('checkin-works');
 export default App;
