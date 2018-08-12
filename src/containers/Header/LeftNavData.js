@@ -7,15 +7,26 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import StarIcon from '@material-ui/icons/Star';
 import SendIcon from '@material-ui/icons/Send';
 import { Divider } from '../../../node_modules/@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export const leftNavListItems = (
   <div>
+    <Link to="/" style={{textDecoration : 'none'}}>
     <ListItem button>
       <ListItemIcon>
         <InboxIcon />
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
+    </Link>
+    <Link to="/features" style={{textDecoration : 'none'}}>
+    <ListItem button>
+      <ListItemIcon>
+        <StarIcon />
+      </ListItemIcon>
+      <ListItemText primary="Features" />
+    </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <StarIcon />

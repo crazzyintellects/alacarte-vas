@@ -34,32 +34,32 @@ function CardDetail(props) {
                 <CardContent>
                     <Typography variant="caption" component="h5">
                         Statement Balance
-          </Typography>
+                </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
                         $ {props.statementBal}
-          </Typography>
+                    </Typography>
                     <Typography variant="caption" component="h3">
                         Available Credit
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                    $ {props.avlCredit}
-          </Typography>
+                        $ {props.avlCredit}
+                    </Typography>
                     <Typography variant="caption" component="h5">
                         Your Payment is Due on
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                    {props.payDueDt}
-          </Typography>
+                        {props.payDueDt}
+                    </Typography>
                     <Typography variant="caption" component="h3">
-                    Minimum Payment Due
+                        Minimum Payment Due
           </Typography>
                     <Divider />
                     <Typography gutterBottom variant="subheading" component="h5">
-                    $ {props.minDue}
-          </Typography>
+                        $ {props.minDue}
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Button variant="contained" color="primary" className={classes.button}>

@@ -10,7 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         chunkFilename: '[id].js',
-        publicPath: ''
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -52,6 +52,9 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        historyApiFallback: true,
+      },
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + '/public/index.html',
