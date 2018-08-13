@@ -8,13 +8,23 @@ import StarIcon from '@material-ui/icons/Star';
 import SendIcon from '@material-ui/icons/Send';
 import { Divider } from '../../../node_modules/@material-ui/core';
 import { Link } from 'react-router-dom';
+import HomeIcon from '@material-ui/icons/AccountBalance';
+import StatementIcon from '@material-ui/icons/Notes';
+import PaymentIcon from '@material-ui/icons/Payment';
+import AccountServices from '@material-ui/icons/Stars';
+import MembershipIcon from '@material-ui/icons/Subscriptions';
+import CreditScoreIcon from '@material-ui/icons/Score';
+import MerchantHomeIcon from '@material-ui/icons/Home';
+import SmallBusinessIcon from '@material-ui/icons/Business';
+import CreditSecureIcon from '@material-ui/icons/Security';
+import PersonalLoanIcon from '@material-ui/icons/face';
 
 export const leftNavListItems = (
   <div>
     <Link to="/" style={{textDecoration : 'none'}}>
     <ListItem button>
       <ListItemIcon>
-        <InboxIcon />
+        <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
@@ -29,56 +39,56 @@ export const leftNavListItems = (
     </Link>
     <ListItem button>
       <ListItemIcon>
-        <StarIcon />
+        <StatementIcon />
       </ListItemIcon>
       <ListItemText primary="Statements" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <SendIcon />
+        <PaymentIcon />
       </ListItemIcon>
       <ListItemText primary="Payments" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DraftsIcon />
+        <AccountServices />
       </ListItemIcon>
       <ListItemText primary="Account Services" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DraftsIcon />
+        <MembershipIcon />
       </ListItemIcon>
       <ListItemText primary="Membership" />
     </ListItem>
     <Divider />
     <ListItem button>
       <ListItemIcon>
-        <InboxIcon />
+        <CreditScoreIcon />
       </ListItemIcon>
       <ListItemText primary="Free Credit Score" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <StarIcon />
+        <MerchantHomeIcon />
       </ListItemIcon>
       <ListItemText primary="Merchant Home" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <SendIcon />
+        <SmallBusinessIcon />
       </ListItemIcon>
       <ListItemText primary="Small Business" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DraftsIcon />
+        <PersonalLoanIcon />
       </ListItemIcon>
       <ListItemText primary="Personal Loan" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DraftsIcon />
+        <CreditSecureIcon />
       </ListItemIcon>
       <ListItemText primary="CreditSecure" />
     </ListItem>
