@@ -60,6 +60,7 @@ const allFeatures = [
         description: 'With your Annual Companion Certificate, you can pair up and go',
 
     },
+     
 ];
 
 const includedVASData = [
@@ -116,7 +117,7 @@ class HomePage extends Component {
                         <IncludedVAS data={includedVASData}/>
                     </Grid>
                     <Grid item xs={6}>
-                       <ToBeAddedVAS data={toBeAddedVas} />
+                       <ToBeAddedVAS data={toBeAddedVas} includedVAS={includedVASData}/>
                     </Grid>
                 </Grid>
             </Fragment>
