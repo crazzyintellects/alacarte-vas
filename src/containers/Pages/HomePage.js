@@ -3,6 +3,9 @@ import CardsSection from '../../components/CardsSection/CardsSection';
 import Grid from '@material-ui/core/Grid';
 import IncludedVAS from '../../components/ValueAddedServices/IncludedVAS/IncludedVAS';
 import ToBeAddedVAS from '../../components/ValueAddedServices/ToBeAddedVAS/ToBeAddedVAS';
+import TransactionHisSection from "./transactions";
+
+import {Route} from "react-router-dom";
 class HomePage extends Component {
 
     render() {
@@ -18,6 +21,10 @@ class HomePage extends Component {
                     <Grid item xs={6}>
                        <ToBeAddedVAS />
                     </Grid>
+                    <Grid item xs={6}>
+                        <TransactionHisSection/>
+                    </Grid>
+
                 </Grid>
             </Fragment>
         )

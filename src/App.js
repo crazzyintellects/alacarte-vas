@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import HeaderNav from './containers/Header/HeaderNav';
 import HomePage from '../src/containers/Pages/HomePage';
 import FeaturesPage from '../src/containers/Pages/FeaturesPage';
+
 import { Route } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -28,7 +29,7 @@ const App = (props) => {
           <Grid item xs={12}>
           <Route path="/features" component={FeaturesPage} />
           </Grid>
-        
+
       </Grid>
       </div>
     </Fragment>
