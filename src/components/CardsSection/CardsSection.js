@@ -92,6 +92,7 @@ const styles = theme => ({
 ];*/
 
 class CardsSection extends Component {
+//Call to get payment data
 
     state = {
         cardData : [
@@ -165,6 +166,7 @@ class CardsSection extends Component {
         cards[cardIndex] = card;
     
         this.setState( {cardData: cards} );
+        this.props.passTitletoParent(title);
       }
     
 
