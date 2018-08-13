@@ -11,13 +11,14 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-        marginTop: 70,
+        //backgroundColor: theme.palette.background.paper,
+        marginTop: 50,
     },
     gridList: {
         flexWrap: 'nowrap',
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
+        overflowY: 'hidden',
     },
     title: {
         color: theme.palette.primary.light,
@@ -62,8 +63,8 @@ const cardData = [
         avlCredit: '339.23',
         payDueDt: 'September 10',
         minDue: '28.20'
-    },
-    {
+    }
+    ,{
         img: '../../src/assets/hilton-honors.png',
         title: 'Hilton',
         statementBal: '210.78',
@@ -71,7 +72,7 @@ const cardData = [
         payDueDt: 'September 15',
         minDue: '10.00'
     },
-    {
+   /* {
         img: '../../src/assets/platinum-delta-skymiles.png',
         title: 'Delta',
         statementBal: '10.78',
@@ -86,7 +87,7 @@ const cardData = [
         avlCredit: '3232.50',
         payDueDt: 'September 3',
         minDue: '13.23'
-    },
+    }*/
 
 ];
 
@@ -106,8 +107,9 @@ function CardsSection(props) {
                         minDue={card.minDue}
                     />
                 ))}
-
             </GridList>
+
+
         </div>
     );
 }

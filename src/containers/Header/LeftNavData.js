@@ -19,14 +19,14 @@ export const leftNavListItems = (
       <ListItemText primary="Home" />
     </ListItem>
     </Link>
-    <Link to="/features" style={{textDecoration : 'none'}}>
+    <NavLink to="/features" style={{textDecoration : 'none'}} >
     <ListItem button>
       <ListItemIcon>
         <StarIcon />
       </ListItemIcon>
       <ListItemText primary="Features" />
     </ListItem>
-    </Link>
+    </NavLink>
     <ListItem button>
       <ListItemIcon>
         <StarIcon />

@@ -8,12 +8,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Divider } from '../../../node_modules/@material-ui/core';
-
+import cssClasses from './CardDetail.css';
 
 const styles = {
     card: {
         maxWidth: 250,
-        margin: 5,
+        margin: 6,
     },
     media: {
         height: 0,
@@ -24,8 +24,9 @@ const styles = {
 function CardDetail(props) {
     const { classes } = props;
     return (
-        <div>
-            <Card className={classes.card}>
+        <div className={cssClasses.Card_Detail}>
+            <Card className={classes.card}
+                >
                 <CardMedia
                     className={classes.media}
                     image={props.img}
