@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import CarIcon from '../../../assets/platinum.png';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -35,7 +36,7 @@ const styles = theme => ({
 });
 
 // To Be Added VAS Data
-const toBeAddedVASData = [
+/*const toBeAddedVASData = [
     {
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
@@ -69,10 +70,11 @@ const toBeAddedVASData = [
 
 
 
-];
+];*/
 
 const ToBeAddedVAS = (props) => {
     const { classes } = props;
+    const toBeAddedVASData = props.data;
     return (
         <div className={classes.root}>
             <Grid container spacing={24}>
@@ -99,10 +101,12 @@ const ToBeAddedVAS = (props) => {
                     </List>
                 </Grid>
                 <Grid item xs={12} >
+                <Link to="/features" style={{textDecoration : 'none'}} >
                     <Button variant="contained" color="secondary" className={classes.button}>
                         Add Benefits
                   <Icon className={classes.rightIcon}>send</Icon>
                     </Button>
+                    </Link>
                 </Grid>
             </Grid>
 
