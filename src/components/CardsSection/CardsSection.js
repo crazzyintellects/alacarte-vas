@@ -30,67 +30,6 @@ const styles = theme => ({
 });
 
 
-// Card Data
-/*const cardData = [
-    {
-        img: '../../src/assets/platinum.png',
-        title: 'Platinum',
-        statementBal: '210.78',
-        avlCredit: '339.23',
-        payDueDt: 'September 10',
-        minDue: '32.33'
-    },
-    {
-        img: '../../src/assets/premier-rewards-gold.png',
-        title: 'Gold',
-        statementBal: '890.78',
-        avlCredit: '7988.23',
-        payDueDt: 'September 4',
-        minDue: '13.22'
-    },
-    {
-        img: '/../../src/assets/green.png',
-        title: 'Green',
-        statementBal: '210.78',
-        avlCredit: '339.23',
-        payDueDt: 'August 30',
-        minDue: '23.45'
-    },
-    {
-        img: '../../src/assets/everyday.jpg',
-        title: 'Everyday',
-        statementBal: '210.78',
-        avlCredit: '339.23',
-        payDueDt: 'September 10',
-        minDue: '28.20'
-    }
-    , {
-        img: '../../src/assets/hilton-honors.png',
-        title: 'Hilton',
-        statementBal: '210.78',
-        avlCredit: '339.23',
-        payDueDt: 'September 15',
-        minDue: '10.00'
-    },
-    /* {
-         img: '../../src/assets/platinum-delta-skymiles.png',
-         title: 'Delta',
-         statementBal: '10.78',
-         avlCredit: '1349.00',
-         payDueDt: 'September 20',
-         minDue: '23.45'
-     },
-     {
-         img: '../../src/assets/starwood-preferred-guest.png',
-         title: 'SPG',
-         statementBal: '24.50',
-         avlCredit: '3232.50',
-         payDueDt: 'September 3',
-         minDue: '13.23'
-     }
-
-];*/
-
 class CardsSection extends Component {
 //Call to get payment data
 
