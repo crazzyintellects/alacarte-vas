@@ -27,7 +27,7 @@ const styles = theme => ({
 });
 
 // Included VAS Data
-const includedVASData = [
+ /*const includedVASData = [
     {
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
@@ -61,10 +61,11 @@ const includedVASData = [
     
 
 
-];
+];*/
 
 const IncludedVAS = (props) => {
     const { classes } = props;
+    const includedVASData = props.data;
     return (
         <div className={classes.root}>
             <Grid container  spacing={24}>

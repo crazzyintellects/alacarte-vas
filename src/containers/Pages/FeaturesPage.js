@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import FeatureSection from '../../containers/FeatureSection/FeatureSection';
-
+import CardItem from '../../components/CardItem/CardItem';
 
 class FeaturesPage extends Component {
 
@@ -8,6 +8,7 @@ class FeaturesPage extends Component {
         return (
             <Fragment>
                 <FeatureSection />
+<CardItem />
             </Fragment>
         )
     }

@@ -23,8 +23,13 @@ const styles = {
 
 function CardDetail(props) {
     const { classes } = props;
+    const assignedClasses = [];
+    assignedClasses.push(cssClasses.Card_Detail);
+    if(props.selected){
+        assignedClasses.push(cssClasses.Card_Detail_selection);
+    }
     return (
-        <div className={cssClasses.Card_Detail}>
+        <div className={assignedClasses.join(' ')} onClick={props.clicked}>
             <Card className={classes.card}
                 >
                 <CardMedia
