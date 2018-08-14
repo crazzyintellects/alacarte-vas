@@ -7,6 +7,8 @@ import _ from 'underscore';
 import axiosInstance from '../../axiosInstance';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Transactions from '../../components/PaymentDetails/tabs';
+import { rankMap } from './dynamicNotifications';
+
 
 
 const allFeatures = [
@@ -554,6 +556,7 @@ class HomePage extends Component {
         axiosInstance.get(`recentTransactions/${titleValue}.json`)
             .then(response => {
                 console.log(response);
+                console.log(rankMap(response.data.pending.transactions))
 
                 //to be added service
                 //let names = {};
