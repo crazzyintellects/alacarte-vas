@@ -6,17 +6,24 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import TransactionLine from '../../components/PaymentDetails/transactionSectionTable';
 
 function TabContainer(props) {
+
+
     return (
-        <Typography component="div" style={{ padding: 8 * 3 }}>
-            {props.children}
-        </Typography>
+        <div>
+            <TransactionLine transactionData={props.transactionData.transactions} />
+
+        </div>
     );
 }
 
-TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
+
+TabContainer.defaultProps = {
+    transactionData: {
+        transactions : [],
+    },
 };
 
 const styles = {
@@ -40,6 +47,7 @@ class CenteredTabs extends React.Component {
 
     render() {
         const { classes } = this.props;
+        const { transactionData } = this.props;
         const { value } = this.state;
         return (
             <Grid container  spacing={24}>
@@ -63,8 +71,8 @@ class CenteredTabs extends React.Component {
                     <Tab label="Pending" />
 
                 </Tabs>
-                {value === 0 && <TabContainer>Item One</TabContainer>}
-                {value === 1 && <TabContainer>Item Two</TabContainer>}
+                {value === 0 && <TabContainer transactionData={transactionData.posted}/>}
+                {value === 1 && <TabContainer transactionData={transactionData.pending}></TabContainer>}
             </Paper>
                 </Grid>
             </Grid>
@@ -74,6 +82,11 @@ class CenteredTabs extends React.Component {
 
 CenteredTabs.propTypes = {
     classes: PropTypes.object.isRequired,
+};
+CenteredTabs.defaultProps = {
+    transactionData: {
+        transactions: [],
+    },
 };
 
 export default withStyles(styles)(CenteredTabs);

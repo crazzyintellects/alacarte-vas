@@ -19,41 +19,34 @@ const styles = theme => ({
 
 function SimpleExpansionPanel(props) {
     const { classes } = props;
+    const { transactionData } = props;
+
+
     return (
         <div className={classes.root}>
-            <ExpansionPanel>
+            {transactionData.map((obj) => (<ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Expansion Panel 1</Typography>
+                    <Typography className={classes.heading}>{obj.date} &nbsp;&nbsp; {obj.merchantName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;{obj.amount} </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                        sit amet blandit leo lobortis eget.
+                        Merchant Name: {obj.merchantName}<br/>
+                        Merchant Category: {obj.merchantCategory}
                     </Typography>
                 </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Expansion Panel 2</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                        sit amet blandit leo lobortis eget.
-                    </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel disabled>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography className={classes.heading}>Disabled Expansion Panel</Typography>
-                </ExpansionPanelSummary>
-            </ExpansionPanel>
+            </ExpansionPanel>))}
+
+
         </div>
     );
 }
 
 SimpleExpansionPanel.propTypes = {
     classes: PropTypes.object.isRequired,
+    transactionData: PropTypes.arrayOf(
+        PropTypes.object,
+    ).isRequired,
 };
+
 
 export default withStyles(styles)(SimpleExpansionPanel);

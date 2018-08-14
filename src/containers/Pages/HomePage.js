@@ -511,7 +511,7 @@ class HomePage extends Component {
                     toBeAddedServices: toBeAddedVas,
                     cardName:response.data[0].cardName,
                     loading: false
-                });
+                },()=>{this.fetchServices(response.data[0].cardName)});
             })
             .catch(error => {
 
@@ -525,6 +525,31 @@ class HomePage extends Component {
 
 
     fetchServices = (titleValue) => {
+        this.setState({ loading: true });
+        axiosInstance.get(`recentTransactions/${titleValue}.json`)
+            .then(response => {
+                console.log(response);
+
+                //to be added service
+                //let names = {};
+              //  _.each(response.data[0].benefits, function (data) { names[data.name] = true; });
+
+               /* let toBeAddedVas = _.filter(allFeatures, function (val) {
+                    return !names[val.name];
+                }, response.data[0].benefits);*/
+
+                this.setState({
+                    transactionData:response.data,
+                    loading: false
+                });
+            })
+            .catch(error => {
+
+                //console.log(error);
+                this.setState({
+                    loading: false
+                });
+            });
 
         const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
 
@@ -588,7 +613,7 @@ class HomePage extends Component {
                         {cardToBEservices}
                     </Grid>
                     <Grid item xs={12}>
-                        <Transactions/>
+                        <Transactions transactionData={this.state.transactionData}/>
                     </Grid>
 
                 </Grid>
