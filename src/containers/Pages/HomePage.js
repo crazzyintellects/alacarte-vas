@@ -109,7 +109,7 @@ const allFeatures = [
 
 ];
 
-const cardServiceMapping = [
+/*const cardServiceMapping = [
 {
     cardName: 'Platinum',
     benefits: 
@@ -467,7 +467,7 @@ const cardServiceMapping = [
 
 },
         
-];
+];*/
 
 class HomePage extends Component {
 
@@ -483,13 +483,13 @@ class HomePage extends Component {
     componentDidMount() {
 
         //Default data entry
-         axiosInstance.post('/cardbenefits.json',cardServiceMapping)
+         /*axiosInstance.post('/cardbenefits.json',cardServiceMapping)
          .then(response => console.log(response))
-         .catch(error => console.log(error)) 
+         .catch(error => console.log(error)) */
 
         //fetch all card service mapping
         this.setState({ loading: true });
-        axiosInstance.get('cardbenefits/-LJmYN3b9bmqYuWLm-2n.json')
+        axiosInstance.get('cardbenefits/-LJqNFZRncwPchU94500.json')
             .then(response => {
                 //console.log(response);
 

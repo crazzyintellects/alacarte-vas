@@ -75,6 +75,7 @@ const styles = theme => ({
 const ToBeAddedVAS = (props) => {
     const { classes } = props;
     const toBeAddedVASData = props.data;
+    
     return (
         <div className={classes.root}>
             <Grid container spacing={24}>
