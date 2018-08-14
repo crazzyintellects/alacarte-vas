@@ -12,60 +12,104 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
 
     },
     {
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
+        monthlyAmount: '$15',
+        yearlyAmount: '$150',
 
     },
     {
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
+        monthlyAmount: '$50',
+        yearlyAmount: '$500',
 
     },
     {
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
-        description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        description: 'Can provide coverage for loss from an injury.',
+        monthlyAmount: '$100',
+        yearlyAmount: '$1000',
 
     },
     {
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
+        monthlyAmount: '$10',
+        yearlyAmount: '$100',
 
     },
     {
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
-        description: 'Can extend the original warranty for up to one extra year for purchases made on your Card',
-
-    },
-    {
-        img: '../../../src/assets/prioirty-pass-ascend.jpg',
-        name: 'NEW! Priority PassTM Select',
-        description: 'Wherever your travels take you, relax with complimentary PassTM with 10 free lounge visits every year',
+        description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
 
     },
     {
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
 
     },
     {
         img: '../../../src/assets/CompanionCertificateOpen.jpg',
-        name: 'Companion Certificate',
-        description: 'With your Annual Companion Certificate, you can pair up and go',
-
+        name: 'Uber Rides',
+        description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
+        monthlyAmount: '$5',
+        yearlyAmount: '$50',
+    },
+    {
+        img: '../../../src/assets/lounge.JPG',
+        name: 'Global Lounge Collection',
+        description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
+        monthlyAmount: '$40',
+        yearlyAmount: '$400',
+    },
+    {
+        img: '../../../src/assets/Boingo.JPG',
+        name: 'Boingo American Express Preferred Plan',
+        description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
+        monthlyAmount: '$3',
+        yearlyAmount: '$30',
+    },
+    {
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+    },
+    {
+        img: '../../../src/assets/airbnb.JPG',
+        name: 'airbnb Bookings',
+        description: 'Receive double points on all airbnb bookings',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+    },
+    {
+        img: '../../../src/assets/reward.JPG',
+        name: 'Reward Yourself More',
+        description: 'Based on your card usage, earn more rewards on qualified expenses.',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
     },
 
 ];
 
-/*const cardServiceMapping = [
+const cardServiceMapping = [
 {
     cardName: 'Platinum',
     benefits: 
@@ -73,19 +117,107 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
+        monthlyAmount: '$15',
+        yearlyAmount: '$150',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
+        monthlyAmount: '$50',
+        yearlyAmount: '$500',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
+    },
+    {
+        img: '../../../src/assets/TravelAccidentInsurance.jpg',
+        name: 'Travel Accident Insurance',
+        description: 'Can provide coverage for loss from an injury.',
+        monthlyAmount: '$100',
+        yearlyAmount: '$1000',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
+        name: 'No Foreign Transaction Fees',
+        description: 'No Foreign Transaction Fees on international purchases',
+        monthlyAmount: '$10',
+        yearlyAmount: '$100',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/ExtendedWarranty.jpg',
+        name: 'Extended Warranty',
+        description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/AutoPurchaseProgram.jpg',
+        name: 'Amex Auto Purchasing Program',
+        description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/CompanionCertificateOpen.jpg',
+        name: 'Uber Rides',
+        description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
+        monthlyAmount: '$5',
+        yearlyAmount: '$50',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+    },
+    {
+        img: '../../../src/assets/lounge.JPG',
+        name: 'Global Lounge Collection',
+        description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
+        monthlyAmount: '$40',
+        yearlyAmount: '$400',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+    },
+    {
+        img: '../../../src/assets/Boingo.JPG',
+        name: 'Boingo American Express Preferred Plan',
+        description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
+        monthlyAmount: '$3',
+        yearlyAmount: '$30',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+    },
+    {
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
     }]
 
 },
@@ -93,22 +225,83 @@ const allFeatures = [
     cardName: 'Gold',
     benefits: 
     [{
-        img: '../../../src/assets/prioirty-pass-ascend.jpg',
-        name: 'NEW! Priority PassTM Select',
-        description: 'Wherever your travels take you, relax with complimentary PassTM with 10 free lounge visits every year',
+        img: '../../../src/assets/CarIcon.jpg',
+        name: 'Car Rental Loss & Damage Insurance',
+        description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/FirstBagFree.jpg',
+        name: 'First Checked Bag Free',
+        description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
+        monthlyAmount: '$15',
+        yearlyAmount: '$150',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/PurchaseProtection.jpg',
+        name: 'Purchase Protection',
+        description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
+        monthlyAmount: '$50',
+        yearlyAmount: '$500',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/TravelAccidentInsurance.jpg',
+        name: 'Travel Accident Insurance',
+        description: 'Can provide coverage for loss from an injury.',
+        monthlyAmount: '$100',
+        yearlyAmount: '$1000',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
+        name: 'No Foreign Transaction Fees',
+        description: 'No Foreign Transaction Fees on international purchases',
+        monthlyAmount: '$10',
+        yearlyAmount: '$100',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/ExtendedWarranty.jpg',
+        name: 'Extended Warranty',
+        description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
-        img: '../../../src/assets/CompanionCertificateOpen.jpg',
-        name: 'Companion Certificate',
-        description: 'With your Annual Companion Certificate, you can pair up and go',
-
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
     }]
 
 },
@@ -116,22 +309,72 @@ const allFeatures = [
     cardName: 'Green',
     benefits: 
     [{
-        img: '../../../src/assets/TravelAccidentInsurance.jpg',
-        name: 'Travel Accident Insurance',
+        img: '../../../src/assets/CarIcon.jpg',
+        name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/FirstBagFree.jpg',
+        name: 'First Checked Bag Free',
+        description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
+        monthlyAmount: '$15',
+        yearlyAmount: '$150',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/PurchaseProtection.jpg',
+        name: 'Purchase Protection',
+        description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
+        monthlyAmount: '$50',
+        yearlyAmount: '$500',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
+        name: 'No Foreign Transaction Fees',
+        description: 'No Foreign Transaction Fees on international purchases',
+        monthlyAmount: '$10',
+        yearlyAmount: '$100',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/ExtendedWarranty.jpg',
+        name: 'Extended Warranty',
+        description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        selectedPeriod: 'Annual',
 
     },
     {
-        img: '../../../src/assets/ExtendedWarranty.jpg',
-        name: 'Extended Warranty',
-        description: 'Can extend the original warranty for up to one extra year for purchases made on your Card',
-
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
     }]
 
 },
@@ -139,23 +382,23 @@ const allFeatures = [
     cardName: 'Everyday',
     benefits: 
     [{
-        img: '../../../src/assets/PurchaseProtection.jpg',
-        name: 'Purchase Protection',
-        description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-
-
-    },
-    {
-        img: '../../../src/assets/AutoPurchaseProgram.jpg',
-        name: 'Amex Auto Purchasing Program',
-        description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-
-    },
-    {
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
+    },
+    {
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
     }]
 
 },
@@ -163,31 +406,68 @@ const allFeatures = [
     cardName: 'Hilton',
     benefits: 
     [{
+        img: '../../../src/assets/CarIcon.jpg',
+        name: 'Car Rental Loss & Damage Insurance',
+        description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
+        monthlyAmount: '$20',
+        yearlyAmount: '$200',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/FirstBagFree.jpg',
+        name: 'First Checked Bag Free',
+        description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
+        monthlyAmount: '$15',
+        yearlyAmount: '$150',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/PurchaseProtection.jpg',
+        name: 'Purchase Protection',
+        description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
+        monthlyAmount: '$50',
+        yearlyAmount: '$500',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
+        img: '../../../src/assets/TravelAccidentInsurance.jpg',
+        name: 'Travel Accident Insurance',
+        description: 'Can provide coverage for loss from an injury.',
+        monthlyAmount: '$100',
+        yearlyAmount: '$1000',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
+
+    },
+    {
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-    },
-    {
-        img: '../../../src/assets/AutoPurchaseProgram.jpg',
-        name: 'Amex Auto Purchasing Program',
-        description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
+        monthlyAmount: '$10',
+        yearlyAmount: '$100',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
 
     },
     {
-        img: '../../../src/assets/ExtendedWarranty.jpg',
-        name: 'Extended Warranty',
-        description: 'Can extend the original warranty for up to one extra year for purchases made on your Card',
-
-
-    },{
-    img: '../../../src/assets/prioirty-pass-ascend.jpg',
-    name: 'NEW! Priority PassTM Select',
-    description: 'Wherever your travels take you, relax with complimentary PassTM with 10 free lounge visits every year',
+        img: '../../../src/assets/Baggage.JPG',
+        name: 'Baggage Insurance Plan',
+        description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
+        monthlyAmount: '$30',
+        yearlyAmount: '$300',
+        isSelected: 'true',
+        selectedPeriod: 'Annual',
     }]
 
 },
         
-];*/
+];
 
 class HomePage extends Component {
 
@@ -203,9 +483,9 @@ class HomePage extends Component {
     componentDidMount() {
 
         //Default data entry
-        /* axiosInstance.post('/cardbenefits.json',cardServiceMapping)
+         axiosInstance.post('/cardbenefits.json',cardServiceMapping)
          .then(response => console.log(response))
-         .catch(error => console.log(error)) */
+         .catch(error => console.log(error)) 
 
         //fetch all card service mapping
         this.setState({ loading: true });
