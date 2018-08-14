@@ -45,8 +45,7 @@ class CardItem extends React.Component {
 
     }
     componentDidMount() {
-        console.log('itemTitle: ', this.props.itemName);
-        console.log('itemImg: ', this.props.img);
+        console.log('itemLevelProps: ', this.props);
         let selected = false;
         if (this.props.selected === 'true') {
             selected = true;
@@ -99,6 +98,7 @@ class CardItem extends React.Component {
                 price: this.state.dispAmt,
                 img: this.props.img,
                 desc: this.state.description,
+                cardName: this.props.cardName,
             }
             this.props.remove(myObject);
         } else {
@@ -111,6 +111,7 @@ class CardItem extends React.Component {
                 price: this.state.dispAmt,
                 img: this.props.img,
                 desc: this.state.description,
+                cardName: this.props.cardName,
             }
             this.props.add(myObject);
         }

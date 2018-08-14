@@ -76,6 +76,7 @@ class FeaturesPage extends Component {
                                         selected="false"
                                         selectedPeriod="Monthly"
                                         img={value.img}
+                                        cardName={this.props.featuresData.cardName}
                                         desc={value.description}
                                         add={this.addItem}
                                         remove={this.removeItem}
