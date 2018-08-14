@@ -6,6 +6,8 @@ import ToBeAddedVAS from '../../components/ValueAddedServices/ToBeAddedVAS/ToBeA
 import _ from 'underscore';
 import axiosInstance from '../../axiosInstance';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Transactions from '../../components/PaymentDetails/tabs';
+
 
 const allFeatures = [
     {
@@ -286,8 +288,8 @@ class HomePage extends Component {
                     <Grid item xs={6}>
                         {cardToBEservices}
                     </Grid>
-                    <Grid item xs={6}>
-                        <TransactionHisSection/>
+                    <Grid item xs={12}>
+                        <Transactions/>
                     </Grid>
 
                 </Grid>
