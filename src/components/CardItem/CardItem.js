@@ -1,17 +1,27 @@
+
+/*
+<CardItem 
+    itemName="Priority Boarding"
+    monthlyPrice="5.99"
+    annualPrice="59.99"
+    selected="true"
+    selectedPeriod="Monthly"
+    img="../../src/assets/PriorityBoardingDelta.jpg"
+/>
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import CardActions from '@material-ui/core/CardActions';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import { Divider } from '../../../node_modules/@material-ui/core';
 import Card from '@material-ui/core/Card';
+import NativeSelect from '@material-ui/core/NativeSelect';
 
 const styles = {
     item: {
-        width: 320,
+        width: 400,
         height: 75,
         padding: 0,
     },
@@ -20,9 +30,11 @@ const styles = {
         top: 8,
     },
     img: {
-        width: 160,
+        width: 185,
         height: 75,
-        margin: -3,
+        marginTop: 2,
+        marginRight: 3,
+        marginBottom: -3,
     },
     btnimg: {
         position: 'absolute',
@@ -33,7 +45,7 @@ const styles = {
     period: {
         position: 'absolute',
         bottom: 3,
-        left: 20,
+        left: 15,
     },
     button: {
         position: 'absolute',
@@ -68,11 +80,13 @@ class CardItem extends React.Component {
             this.setState({
                 dispAmt: this.props.monthlyPrice,
                 selected: selected,
+                periodIdx: 1,
             });
         } else {
             this.setState({
                 dispAmt: this.props.annualPrice,
                 selected: selected,
+                periodIdx: 2,
             });
         }
     }
@@ -81,10 +95,12 @@ class CardItem extends React.Component {
       dispAmt: '0.00',
       selected: false,
       selectedPeriod: this.props.selectedPeriod,
+      description: this.props.desc,
+      periodIdx: 1,
     };
-    changedPeriod = () => {
-        console.log('clicked: changedPeriod');
-        if (this.state.selectedPeriod === 'Monthly') {
+    handleChange = name => event => {
+        console.log('clicked: changedPeriod:', event.target.value);
+        if (event.target.value === 'Annual') {
             this.setState({
                 selectedPeriod: 'Annual',
                 dispAmt: this.props.annualPrice,
@@ -95,17 +111,33 @@ class CardItem extends React.Component {
                 dispAmt: this.props.monthlyPrice,
             });
         }
-    }
+      };
     changedSelection = () => {
         console.log('clicked: changedSelection');
         if (this.state.selected) {
             this.setState({
                 selected: false,
             });
+            const myObject = {
+                name: this.props.itemName,
+                period: this.state.selectedPeriod,
+                price: this.state.dispAmt,
+                img: this.props.img,
+                desc: this.state.description,
+            }
+            this.props.remove(myObject);
         } else {
             this.setState({
                 selected: true,
             });
+            const myObject = {
+                name: this.props.itemName,
+                period: this.state.selectedPeriod,
+                price: this.state.dispAmt,
+                img: this.props.img,
+                desc: this.state.description,
+            }
+            this.props.add(myObject);
         }
     }
     render() {
@@ -118,6 +150,9 @@ class CardItem extends React.Component {
                 </Typography>
                 <Card  >
                     <Container >
+                       
+                       
+                       
                         <Row>
                         <Col sm={6} >
                             <div>
@@ -125,14 +160,19 @@ class CardItem extends React.Component {
                                     {this.props.itemName}
                                 </Typography>
                                 <Checkbox className={classes.chkbox} color="primary" checked={this.state.selected} onClick={this.changedSelection} />
-                                <div onClick={this.changedPeriod} >
-                                    <img className={classes.btnimg} src="../../src/assets/smButton.png" />
-                                    <Typography className={classes.period} gutterBottom variant="subheading" component="h5">
-                                        {this.state.selectedPeriod}
-                                    </Typography>
-                                </div>
+                                <NativeSelect
+                                    className={classes.period}
+                                    value={this.state.selectedPeriod}
+                                    name='selectedPeriod'
+                                    onChange={this.handleChange('selectedPeriod')}
+                                >
+                                    <option value={this.state.periodIdx}>
+                                    </option>
+                                    <option value={'Monthly'}>Monthly</option>
+                                    <option value={'Annual'}>Annual</option>
+                                </NativeSelect>
                                 <Typography className={classes.price} gutterBottom variant="subheading" component="h5">
-                                    ${this.state.dispAmt}
+                                    {this.state.dispAmt}
                                 </Typography>
                             </div>
                         </Col>
