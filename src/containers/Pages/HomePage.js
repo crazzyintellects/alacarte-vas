@@ -493,7 +493,7 @@ class HomePage extends Component {
 
         //fetch all card service mapping
         this.setState({ loading: true });
-        axiosInstance.get('cardbenefits/-LJqNFZRncwPchU94500.json')
+        axiosInstance.get('cardbenefits/-LJu0HRlJHvsYyvVILze.json')
             .then(response => {
                 //console.log(response);
 
