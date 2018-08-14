@@ -520,7 +520,7 @@ class HomePage extends Component {
 
         //fetch all card service mapping
         this.setState({ loading: true });
-        axiosInstance.get('cardbenefits/-LJu0HRlJHvsYyvVILze.json')
+        axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
                 //console.log(response);
 
@@ -553,7 +553,7 @@ class HomePage extends Component {
 
     fetchServices = (titleValue) => {
         this.setState({ loading: true });
-        axiosInstance.get(`recentTransactions/${titleValue}.json`)
+        axiosInstance.get(`-LJu575aGyByO4FqneBZ/recentTransactions/${titleValue}.json`)
             .then(response => {
                 console.log(response);
                 console.log(rankMap(response.data.pending.transactions))

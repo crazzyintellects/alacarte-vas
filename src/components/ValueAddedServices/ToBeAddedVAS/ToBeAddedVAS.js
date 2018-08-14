@@ -74,7 +74,6 @@ const styles = theme => ({
 
 
 const buttonClickHandler = (props) => {
-   
       props.callToParent();
 }
 
