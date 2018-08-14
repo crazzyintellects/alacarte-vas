@@ -72,9 +72,17 @@ const styles = theme => ({
 
 ];*/
 
+
+const buttonClickHandler = (props) => {
+   
+      props.callToParent();
+}
+
+
 const ToBeAddedVAS = (props) => {
     const { classes } = props;
     const toBeAddedVASData = props.data;
+    //console.log(props);
     
     return (
         <div className={classes.root}>
@@ -102,12 +110,13 @@ const ToBeAddedVAS = (props) => {
                     </List>
                 </Grid>
                 <Grid item xs={12} >
-                <Link to="/features" style={{textDecoration : 'none'}} >
-                    <Button variant="contained" color="secondary" className={classes.button}>
+                
+                    <Button variant="contained" color="secondary" className={classes.button} onClick={()=> buttonClickHandler(props)}>
                         Add Benefits
                   <Icon className={classes.rightIcon}>send</Icon>
                     </Button>
-                    </Link>
+                  
+                   
                 </Grid>
             </Grid>
 

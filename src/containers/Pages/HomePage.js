@@ -473,10 +473,12 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
+        //console.log('home props ', props);
         this.state = {
             cardServiceMapping: null,
             includedServices: null,
             toBeAddedServices: null,
+            cardName:'',
         }
     }
 
@@ -505,6 +507,7 @@ class HomePage extends Component {
                     cardServiceMapping: response.data,
                     includedServices: response.data[0].benefits,
                     toBeAddedServices: toBeAddedVas,
+                    cardName:response.data[0].cardName,
                     loading: false
                 });
             })
@@ -532,9 +535,22 @@ class HomePage extends Component {
 
         this.setState({
             includedServices: includedVASData[0].benefits,
-            toBeAddedServices: toBeAddedVas
+            toBeAddedServices: toBeAddedVas,
+            cardName:titleValue,
         });
     }
+
+    passDataToFeatures = () => {
+        const location = {
+            pathname: '/features',
+            state: { data : "this.state" }
+          };
+          this.props.history.push(location);
+          this.props.passDataToParent(this.state);
+
+
+    }
+   
 
 
 
@@ -544,7 +560,10 @@ class HomePage extends Component {
         let cardToBEservices = null;
         if (this.state.cardServiceMapping) {
             cardInclServices = <IncludedVAS data={this.state.includedServices} />;
-            cardToBEservices = <ToBeAddedVAS data={this.state.toBeAddedServices} includedVAS={this.state.includedServices} />;
+            cardToBEservices = <ToBeAddedVAS data={this.state.toBeAddedServices} includedVAS={this.state.includedServices} 
+             cardName={this.state.cardName}
+             callToParent={this.passDataToFeatures}
+            />;
 
         }
 

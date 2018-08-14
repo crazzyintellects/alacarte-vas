@@ -13,6 +13,13 @@ const styles = theme => ({
 
 });
 
+let data=null;
+
+const passToFeature = (props) => {
+   data=props;
+}
+
+
 const App = (props) => {
   const { classes } = props;
   return (
@@ -23,10 +30,10 @@ const App = (props) => {
          <HeaderNav />
         </Grid>
         <Grid item xs={12}>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact  render={(props) => <HomePage {...props} passDataToParent={passToFeature} />} />
           </Grid>
           <Grid item xs={12}>
-          <Route path="/features" component={FeaturesPage} />
+          <Route path="/features" render={(props) => <FeaturesPage {...props} featuresData={data} />} />
           </Grid>
         
       </Grid>
