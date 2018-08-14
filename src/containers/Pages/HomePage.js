@@ -16,6 +16,7 @@ const allFeatures = [
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
         monthlyAmount: '$20',
         yearlyAmount: '$200',
+        category: 'rental',
 
     },
     {
@@ -24,6 +25,7 @@ const allFeatures = [
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
         monthlyAmount: '$15',
         yearlyAmount: '$150',
+        category: 'air',
 
     },
     {
@@ -32,6 +34,7 @@ const allFeatures = [
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
         monthlyAmount: '$50',
         yearlyAmount: '$500',
+        category: 'general',
 
     },
     {
@@ -40,6 +43,10 @@ const allFeatures = [
         description: 'Can provide coverage for loss from an injury.',
         monthlyAmount: '$100',
         yearlyAmount: '$1000',
+        category: 'air',
+
+
+
 
     },
     {
@@ -48,6 +55,8 @@ const allFeatures = [
         description: 'No Foreign Transaction Fees on international purchases',
         monthlyAmount: '$10',
         yearlyAmount: '$100',
+        category: 'air',
+
 
     },
     {
@@ -56,6 +65,8 @@ const allFeatures = [
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
         monthlyAmount: '$20',
         yearlyAmount: '$200',
+        category: 'general',
+
 
     },
     {
@@ -64,6 +75,8 @@ const allFeatures = [
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
         monthlyAmount: '$30',
         yearlyAmount: '$300',
+        category: 'general',
+
 
     },
     {
@@ -72,6 +85,8 @@ const allFeatures = [
         description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
         monthlyAmount: '$5',
         yearlyAmount: '$50',
+        category: 'air',
+
     },
     {
         img: '../../../src/assets/lounge.JPG',
@@ -79,6 +94,8 @@ const allFeatures = [
         description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
         monthlyAmount: '$40',
         yearlyAmount: '$400',
+        category: 'air',
+
     },
     {
         img: '../../../src/assets/Boingo.JPG',
@@ -86,6 +103,8 @@ const allFeatures = [
         description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
         monthlyAmount: '$3',
         yearlyAmount: '$30',
+        category: 'air',
+
     },
     {
         img: '../../../src/assets/Baggage.JPG',
@@ -93,6 +112,8 @@ const allFeatures = [
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
         monthlyAmount: '$30',
         yearlyAmount: '$300',
+        category: 'air',
+
     },
     {
         img: '../../../src/assets/airbnb.JPG',
@@ -100,6 +121,8 @@ const allFeatures = [
         description: 'Receive double points on all airbnb bookings',
         monthlyAmount: '$20',
         yearlyAmount: '$200',
+        category: 'hotels',
+
     },
     {
         img: '../../../src/assets/reward.JPG',
@@ -107,6 +130,8 @@ const allFeatures = [
         description: 'Based on your card usage, earn more rewards on qualified expenses.',
         monthlyAmount: '$20',
         yearlyAmount: '$200',
+        category: 'general',
+
     },
 
 ];
