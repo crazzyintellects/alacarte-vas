@@ -60,14 +60,6 @@ class CircularIntegration extends React.Component {
         {
           success: false,
           loading: true
-        },
-        () => {
-          this.timer = setTimeout(() => {
-            this.setState({
-              loading: false,
-              success: true
-            });
-          }, 2000);
         }
       );
     }
@@ -86,8 +78,10 @@ class CircularIntegration extends React.Component {
     console.log('Saving Benefits To Database');
     var databaseInstance = firebaseInstance.database();
     var benefitNumber = -1;
-    console.log('CardName is : ' + props.benefitsData.cardName);
-    switch(props.benefitsData.cardName){
+    console.log('CardName is : ' + props.cardName);
+    console.log('New Benefits Added');
+    console.log(props.selectedArray);
+    switch(props.cardName){
       case 'Platinum':
       benefitNumber = 0;
       break;
@@ -119,7 +113,14 @@ class CircularIntegration extends React.Component {
          var newData = {"description":"Benefit Description 1","img":"","isSelected":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
          //arr.push(newData);
          console.log(arr);
-         //dataRef.set(arr);
+         /*dataRef.set(arr).then(response => {
+           console.log('Benefits Saved');
+           this.setState(
+            {
+              success: true,
+              loading: false
+            });
+         })*/
        });
   }
 
