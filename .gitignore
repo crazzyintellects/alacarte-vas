@@ -1,2 +1,6 @@
 node_modules
 src/.DS_Store
+bundle.js
+index.html
+images/
+.DS_Store
