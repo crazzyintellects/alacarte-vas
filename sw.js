@@ -36,7 +36,7 @@ workboxSW.router.registerRoute('https://alacarte-vas.firebaseio.com/-LJu4D1RTmj_
 workboxSW.precache([
   {
     "url": "bundle.js",
-    "revision": "a5a4142a1559daecfadedbf12c47a3e9"
+    "revision": "97a70fff0dd3b8b9a42a8f0e7563e37e"
   },
   {
     "url": "src/App.js",
@@ -45,6 +45,10 @@ workboxSW.precache([
   {
     "url": "src/assets/airbnb.JPG",
     "revision": "af9e532be54a8f80d355fa333396dc71"
+  },
+  {
+    "url": "src/assets/app-icon-96x96.png",
+    "revision": "56420472b13ab9ea107f3b6046b0a824"
   },
   {
     "url": "src/assets/AutoPurchaseProgram.jpg",
@@ -156,7 +160,7 @@ workboxSW.precache([
   },
   {
     "url": "src/components/notifications/notifications.js",
-    "revision": "2198a8b00d912dad04e65a9a163b9780"
+    "revision": "5c1033eb1ab2e4e70e1af37bd75b5dec"
   },
   {
     "url": "src/components/PaymentDetails/tabs.js",
@@ -176,11 +180,11 @@ workboxSW.precache([
   },
   {
     "url": "src/components/ValueAddedServices/ToBeAddedVAS/ToBeAddedVAS.js",
-    "revision": "873a5ae7741cad719c94eb57d7f13470"
+    "revision": "1b26062e6ed22aa3b322458be143a854"
   },
   {
     "url": "src/containers/FeatureSection/FeatureSection.js",
-    "revision": "714a0e2b9d1d31f5e4954053e36849fb"
+    "revision": "e19738b657fd44e4f346e1a145d42f3f"
   },
   {
     "url": "src/containers/Header/HeaderNav.js",
@@ -192,15 +196,15 @@ workboxSW.precache([
   },
   {
     "url": "src/containers/Pages/dynamicNotifications.js",
-    "revision": "697160c4b68b39c7758cb3aada9c89e3"
+    "revision": "54efaf886cf5606c894bcbdafff02ed9"
   },
   {
     "url": "src/containers/Pages/FeaturesPage.js",
-    "revision": "84e3d51e6c1743d1ae1932dfe62cf715"
+    "revision": "41e4f732d504902126afc0dc1b638092"
   },
   {
     "url": "src/containers/Pages/HomePage.js",
-    "revision": "8ccc03718a41a91aea1a5ce81b5afe0f"
+    "revision": "8ae51d0846291e2739cc9b812f9b2889"
   },
   {
     "url": "src/containers/Pages/transactions.js",
@@ -224,7 +228,7 @@ workboxSW.precache([
   },
   {
     "url": "src/jsUtilities/utility.js",
-    "revision": "499c99fda9b6b8225c116e37e823e325"
+    "revision": "fa53993817e40f5ba7278d6ad0254c1b"
   },
   {
     "url": "sw_init.js",
@@ -232,11 +236,11 @@ workboxSW.precache([
   },
   {
     "url": "sw.js",
-    "revision": "4f35c10d2e45f74cfe935dc438667be9"
+    "revision": "1e4dbd22958a1c55bd7da09988e2c5c3"
   },
   {
     "url": "swbase.js",
-    "revision": "933c9a4585552cf45adf880ad0dcba17"
+    "revision": "1081819f1ef5128d92a7727415b8de15"
   },
   {
     "url": "workbox-sw.prod.v2.1.3.js",
@@ -248,6 +252,44 @@ workboxSW.precache([
   },
   {
     "url": "public/index.html",
-    "revision": "f4c1ef861316c08352f5ca98bc6223c7"
+    "revision": "a0aae9582dce68273813e8a3171e19df"
   }
 ]);
+
+//Background sync
+self.addEventListener('sync', function(event) {
+  console.log('[Service Worker] Background syncing', event);
+  if (event.tag === 'sync-new-services') {
+    console.log('[Service Worker] Syncing new Benefits');
+    event.waitUntil(
+      readAllData('sync-cardbenefits')
+        .then(function(data) {
+          for (var dt of data) {
+            var benefitData = new FormData();
+            benefitData.append('description', dt.description);
+            benefitData.append('img', dt.img);
+            benefitData.append('isSelcted', dt.isSelcted);
+            benefitData.append('name', dt.name);
+
+            fetch('https://alacarte-vas.firebaseio.com/TestingDataAgain/-LJuTt5xpMpZk0B5yH-D/cardBenefits/Everyday/benefits.json', {
+              method: 'POST',
+              body: benefitData
+            })
+              .then(function(res) {
+                console.log('Sent data', res);
+                if (res.ok) {
+                  res.json()
+                    .then(function(resData) {
+                      deleteItemFromData('sync-cardbenefits', resData.cardName);
+                    });
+                }
+              })
+              .catch(function(err) {
+                console.log('Error while sending data', err);
+              });
+          }
+
+        })
+    );
+  }
+});

@@ -617,8 +617,9 @@ class HomePage extends Component {
         let networkDataReceived = false;
         axiosInstance.get(`-LJu575aGyByO4FqneBZ/recentTransactions/${titleValue}.json`)
             .then(response => {
-                console.log(response);
-                console.log(rankMap(response.data.pending.transactions))
+                //console.log(response);
+                networkDataReceived = true;
+                //console.log(rankMap(response.data.pending.transactions))
                 constHighRank = highestRankedCategory(rankMap([...response.data.pending.transactions,...response.data.posted.transactions]));
                 //to be added service
                 //let names = {};
@@ -675,25 +676,26 @@ class HomePage extends Component {
                         });
 
                     }
+                    else{
+
+                        const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
+            
+                        let names = {};
+                        _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
+            
+                        let toBeAddedVas = _.filter(allFeatures, function (val) {
+                            return !names[val.name];
+                        }, includedVASData[0].benefits);
+            
+                        this.setState({
+                            includedServices: includedVASData[0].benefits,
+                            toBeAddedServices: toBeAddedVas,
+                            cardName: titleValue,
+                        });
+            
+            
+                    }
                 });
-
-        }else{
-
-            const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
-
-            let names = {};
-            _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
-
-            let toBeAddedVas = _.filter(allFeatures, function (val) {
-                return !names[val.name];
-            }, includedVASData[0].benefits);
-
-            this.setState({
-                includedServices: includedVASData[0].benefits,
-                toBeAddedServices: toBeAddedVas,
-                cardName: titleValue,
-            });
-
 
         }
 

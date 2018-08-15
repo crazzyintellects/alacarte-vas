@@ -34,3 +34,41 @@ workboxSW.router.registerRoute('https://alacarte-vas.firebaseio.com/-LJu4D1RTmj_
 });
 
 workboxSW.precache([]);
+
+//Background sync
+self.addEventListener('sync', function(event) {
+  console.log('[Service Worker] Background syncing', event);
+  if (event.tag === 'sync-new-services') {
+    console.log('[Service Worker] Syncing new Benefits');
+    event.waitUntil(
+      readAllData('sync-cardbenefits')
+        .then(function(data) {
+          for (var dt of data) {
+            var benefitData = new FormData();
+            benefitData.append('description', dt.description);
+            benefitData.append('img', dt.img);
+            benefitData.append('isSelcted', dt.isSelcted);
+            benefitData.append('name', dt.name);
+
+            fetch('https://alacarte-vas.firebaseio.com/TestingDataAgain/-LJuTt5xpMpZk0B5yH-D/cardBenefits/Everyday/benefits.json', {
+              method: 'POST',
+              body: benefitData
+            })
+              .then(function(res) {
+                console.log('Sent data', res);
+                if (res.ok) {
+                  res.json()
+                    .then(function(resData) {
+                      deleteItemFromData('sync-cardbenefits', resData.cardName);
+                    });
+                }
+              })
+              .catch(function(err) {
+                console.log('Error while sending data', err);
+              });
+          }
+
+        })
+    );
+  }
+});

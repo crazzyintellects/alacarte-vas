@@ -5,7 +5,7 @@ var dbPromise = idb.open('cardbenefits-store', 1, function (db) {
    db.createObjectStore('cardbenefits');
   }
   if (!db.objectStoreNames.contains('sync-cardbenefits')) {
-    db.createObjectStore('sync-cardbenefits', {keyPath: 'cardName'});
+    db.createObjectStore('sync-cardbenefits');
   }
 });
 

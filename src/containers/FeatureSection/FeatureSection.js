@@ -10,6 +10,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import SaveIcon from "@material-ui/icons/Save";
 import axiosInstance from '../../axiosInstance';
 import firebaseInstance from '../../firebaseInstance'
+import Snackbar from '@material-ui/core/Snackbar';
 
 const styles = theme => ({
   root: {
@@ -43,7 +44,10 @@ class CircularIntegration extends React.Component {
 
   state = {
     loading: false,
-    success: false
+    success: false,
+    open: false,
+    vertical: 'top',
+    horizontal: 'right',
   };
 
   componentWillUnmount() {
@@ -68,6 +72,14 @@ class CircularIntegration extends React.Component {
       );
     }
     this.saveDataToDatabase(props);
+  };
+
+  handleClick = state => () => {
+    this.setState({ open: true, ...state });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
   saveDataToDatabase = (props) => {
@@ -112,7 +124,7 @@ class CircularIntegration extends React.Component {
   }
 
   render() {
-    const { loading, success } = this.state;
+    const { loading, success ,  vertical, horizontal, open } = this.state;
     const { classes } = this.props;
     const buttonClassname = classNames({
       [classes.buttonSuccess]: success
@@ -134,6 +146,15 @@ class CircularIntegration extends React.Component {
             <CircularProgress size={24} className={classes.buttonProgress} />
           )}
         </div>
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={open}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">Your Benefit(s) was saved for syncing !</span>}
+        />
       </div>
     );
   }
