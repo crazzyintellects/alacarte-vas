@@ -20,8 +20,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '20',
-        yearlyAmount: '200',
+        monthlyAmount: 20,
+        yearlyAmount: 200,
         category: 'rental',
 
     },
@@ -38,8 +38,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '50',
-        yearlyAmount: '500',
+        monthlyAmount: 50,
+        yearlyAmount: 500,
         category: 'general',
 
     },
@@ -47,8 +47,8 @@ const allFeatures = [
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
         description: 'Can provide coverage for loss from an injury.',
-        monthlyAmount: '100',
-        yearlyAmount: '1000',
+        monthlyAmount: 100,
+        yearlyAmount: 1000,
         category: 'air',
 
 
@@ -59,8 +59,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '10',
-        yearlyAmount: '100',
+        monthlyAmount: 10,
+        yearlyAmount: 100,
         category: 'air',
 
 
@@ -69,8 +69,8 @@ const allFeatures = [
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-        monthlyAmount: '20',
-        yearlyAmount: '200',
+        monthlyAmount: 20,
+        yearlyAmount: 200,
         category: 'general',
 
 
@@ -79,8 +79,8 @@ const allFeatures = [
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-        monthlyAmount: '30',
-        yearlyAmount: '300',
+        monthlyAmount: 30,
+        yearlyAmount: 300,
         category: 'general',
 
 
@@ -89,8 +89,8 @@ const allFeatures = [
         img: '../../../src/assets/CompanionCertificateOpen.jpg',
         name: 'Uber Rides',
         description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
-        monthlyAmount: '5',
-        yearlyAmount: '50',
+        monthlyAmount: 5,
+        yearlyAmount: 50,
         category: 'travel',
 
     },
@@ -98,8 +98,8 @@ const allFeatures = [
         img: '../../../src/assets/lounge.JPG',
         name: 'Global Lounge Collection',
         description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
-        monthlyAmount: '40',
-        yearlyAmount: '400',
+        monthlyAmount: 40,
+        yearlyAmount: 400,
         category: 'air',
 
     },
@@ -107,8 +107,8 @@ const allFeatures = [
         img: '../../../src/assets/Boingo.JPG',
         name: 'Boingo American Express Preferred Plan',
         description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
-        monthlyAmount: '3',
-        yearlyAmount: '30',
+        monthlyAmount: 3,
+        yearlyAmount: 30,
         category: 'air',
 
     },
@@ -116,8 +116,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '30',
-        yearlyAmount: '300',
+        monthlyAmount: 30,
+        yearlyAmount: 300,
         category: 'air',
 
     },
