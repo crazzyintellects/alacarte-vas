@@ -50,7 +50,7 @@ class CircularIntegration extends React.Component {
     clearTimeout(this.timer);
   }
 
-  handleButtonClick = () => {
+  handleButtonClick = (props) => {
     if (!this.state.loading) {
       this.setState(
         {
@@ -67,33 +67,48 @@ class CircularIntegration extends React.Component {
         }
       );
     }
-    this.saveDataToDatabase();
+    this.saveDataToDatabase(props);
   };
 
-  saveDataToDatabase = () => {
-    console.log('Saving Data To Database');
-    const benefits = {benefits:{description:'New Benefit Added',name:'Benefit 1'}}; 
+  saveDataToDatabase = (props) => {
+    console.log('Saving Benefits To Database');
     var databaseInstance = firebaseInstance.database();
-    var dataRef = databaseInstance.ref('TestingDataAgain/-LJuTt5xpMpZk0B5yH-D/cardBenefits/Everyday/benefits');
-       //var keyApp = dataRef.push();
-       //console.log('Key is : ' + keyApp);
-       //var benefitsData = {"description":"Benefit Description","img":"","isSelcted":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
-       //keyApp.set(benefitsData);
-       //dataRef.push(cardServiceMapping)
-       var abc = axiosInstance.get('TestingDataAgain/-LJuTt5xpMpZk0B5yH-D/cardBenefits/Everyday/benefits.json')
+    var benefitNumber = -1;
+    console.log('CardName is : ' + props.benefitsData.cardName);
+    switch(props.benefitsData.cardName){
+      case 'Platinum':
+      benefitNumber = 0;
+      break;
+      case 'Gold':
+      benefitNumber = 1;
+      break;
+      case 'Green':
+      benefitNumber = 2;
+      break;
+      case 'Everyday':
+      benefitNumber = 3;
+      break;
+      case 'Hilton':
+      benefitNumber = 4;
+      break;
+      case 'default':
+      benefitNumber = 0;
+    }
+    var benefitsUrl = '-LJu4D1RTmj_U1MGFR8i/cardbenefits/'+benefitNumber+'/benefits';
+    console.log('Benefits Url is : ' + benefitsUrl);
+    var benefitsUrlJson = '-LJu4D1RTmj_U1MGFR8i/cardbenefits/'+benefitNumber+'/benefits.json';
+    var dataRef = databaseInstance.ref(benefitsUrl);
+    var existingBenefits = axiosInstance.get(benefitsUrlJson)
        .then(response => {
-         console.log('Response aah aaeya hai : ');
+         console.log('Existing Benefits fetched from Database : ');
          console.log(response.data);
          var arr = response.data;
-         var newData = {"description":"Benefit Description","img":"","isSelcted":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
-         arr.push(newData);
+         // below data needs to come from previous page
+         var newData = {"description":"Benefit Description 1","img":"","isSelected":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
+         //arr.push(newData);
          console.log(arr);
-         dataRef.set(arr);
-       })
-     /*axiosInstance.post('cardbenefits.json', cardServiceMapping)
-    .then(response => {
-      console.log('Data Inserted in Database');
-    })*/
+         //dataRef.set(arr);
+       });
   }
 
   render() {
@@ -111,7 +126,7 @@ class CircularIntegration extends React.Component {
             color="primary"
             className={buttonClassname}
             disabled={loading}
-            onClick={this.handleButtonClick}
+            onClick={() => this.handleButtonClick(this.props)}
           >
             Accept terms
           </Button>
