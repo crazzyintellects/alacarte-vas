@@ -20,8 +20,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         category: 'rental',
 
     },
@@ -29,8 +29,8 @@ const allFeatures = [
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-        monthlyAmount: '$15',
-        yearlyAmount: '$150',
+        monthlyAmount: '15',
+        yearlyAmount: '150',
         category: 'air',
 
     },
@@ -38,8 +38,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '$50',
-        yearlyAmount: '$500',
+        monthlyAmount: '50',
+        yearlyAmount: '500',
         category: 'general',
 
     },
@@ -47,8 +47,8 @@ const allFeatures = [
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
         description: 'Can provide coverage for loss from an injury.',
-        monthlyAmount: '$100',
-        yearlyAmount: '$1000',
+        monthlyAmount: '100',
+        yearlyAmount: '1000',
         category: 'air',
 
 
@@ -59,8 +59,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '$10',
-        yearlyAmount: '$100',
+        monthlyAmount: '10',
+        yearlyAmount: '100',
         category: 'air',
 
 
@@ -69,8 +69,8 @@ const allFeatures = [
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         category: 'general',
 
 
@@ -79,8 +79,8 @@ const allFeatures = [
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         category: 'general',
 
 
@@ -89,8 +89,8 @@ const allFeatures = [
         img: '../../../src/assets/CompanionCertificateOpen.jpg',
         name: 'Uber Rides',
         description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
-        monthlyAmount: '$5',
-        yearlyAmount: '$50',
+        monthlyAmount: '5',
+        yearlyAmount: '50',
         category: 'travel',
 
     },
@@ -98,8 +98,8 @@ const allFeatures = [
         img: '../../../src/assets/lounge.JPG',
         name: 'Global Lounge Collection',
         description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
-        monthlyAmount: '$40',
-        yearlyAmount: '$400',
+        monthlyAmount: '40',
+        yearlyAmount: '400',
         category: 'air',
 
     },
@@ -107,8 +107,8 @@ const allFeatures = [
         img: '../../../src/assets/Boingo.JPG',
         name: 'Boingo American Express Preferred Plan',
         description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
-        monthlyAmount: '$3',
-        yearlyAmount: '$30',
+        monthlyAmount: '3',
+        yearlyAmount: '30',
         category: 'air',
 
     },
@@ -116,8 +116,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         category: 'air',
 
     },
@@ -125,8 +125,8 @@ const allFeatures = [
         img: '../../../src/assets/airbnb.JPG',
         name: 'airbnb Bookings',
         description: 'Receive double points on all airbnb bookings',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: 20,
+        yearlyAmount: 200,
         category: 'travel',
 
     },
@@ -134,8 +134,8 @@ const allFeatures = [
         img: '../../../src/assets/reward.JPG',
         name: 'Reward Yourself More',
         description: 'Based on your card usage, earn more rewards on qualified expenses.',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: 20,
+        yearlyAmount: 200,
         category: 'general',
 
     },
@@ -150,8 +150,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -160,8 +160,8 @@ const allFeatures = [
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-        monthlyAmount: '$15',
-        yearlyAmount: '$150',
+        monthlyAmount: '15',
+        yearlyAmount: '150',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -170,8 +170,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '$50',
-        yearlyAmount: '$500',
+        monthlyAmount: '50',
+        yearlyAmount: '500',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -180,8 +180,8 @@ const allFeatures = [
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
         description: 'Can provide coverage for loss from an injury.',
-        monthlyAmount: '$100',
-        yearlyAmount: '$1000',
+        monthlyAmount: '100',
+        yearlyAmount: '1000',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -190,8 +190,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '$10',
-        yearlyAmount: '$100',
+        monthlyAmount: '10',
+        yearlyAmount: '100',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -200,8 +200,8 @@ const allFeatures = [
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -210,8 +210,8 @@ const allFeatures = [
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -220,8 +220,8 @@ const allFeatures = [
         img: '../../../src/assets/CompanionCertificateOpen.jpg',
         name: 'Uber Rides',
         description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
-        monthlyAmount: '$5',
-        yearlyAmount: '$50',
+        monthlyAmount: '5',
+        yearlyAmount: '50',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     },
@@ -229,8 +229,8 @@ const allFeatures = [
         img: '../../../src/assets/lounge.JPG',
         name: 'Global Lounge Collection',
         description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
-        monthlyAmount: '$40',
-        yearlyAmount: '$400',
+        monthlyAmount: '40',
+        yearlyAmount: '400',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     },
@@ -238,8 +238,8 @@ const allFeatures = [
         img: '../../../src/assets/Boingo.JPG',
         name: 'Boingo American Express Preferred Plan',
         description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
-        monthlyAmount: '$3',
-        yearlyAmount: '$30',
+        monthlyAmount: '3',
+        yearlyAmount: '30',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     },
@@ -247,8 +247,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     }]
@@ -261,8 +261,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -271,8 +271,8 @@ const allFeatures = [
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-        monthlyAmount: '$15',
-        yearlyAmount: '$150',
+        monthlyAmount: '15',
+        yearlyAmount: '150',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -281,8 +281,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '$50',
-        yearlyAmount: '$500',
+        monthlyAmount: '50',
+        yearlyAmount: '500',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -291,8 +291,8 @@ const allFeatures = [
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
         description: 'Can provide coverage for loss from an injury.',
-        monthlyAmount: '$100',
-        yearlyAmount: '$1000',
+        monthlyAmount: '100',
+        yearlyAmount: '1000',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -301,8 +301,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '$10',
-        yearlyAmount: '$100',
+        monthlyAmount: '10',
+        yearlyAmount: '100',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -311,8 +311,8 @@ const allFeatures = [
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -321,8 +321,8 @@ const allFeatures = [
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -331,8 +331,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     }]
@@ -345,8 +345,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -355,8 +355,8 @@ const allFeatures = [
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-        monthlyAmount: '$15',
-        yearlyAmount: '$150',
+        monthlyAmount: '15',
+        yearlyAmount: '150',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -365,8 +365,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '$50',
-        yearlyAmount: '$500',
+        monthlyAmount: '50',
+        yearlyAmount: '500',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -375,8 +375,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '$10',
-        yearlyAmount: '$100',
+        monthlyAmount: '10',
+        yearlyAmount: '100',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -385,8 +385,8 @@ const allFeatures = [
         img: '../../../src/assets/ExtendedWarranty.jpg',
         name: 'Extended Warranty',
         description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -395,8 +395,8 @@ const allFeatures = [
         img: '../../../src/assets/AutoPurchaseProgram.jpg',
         name: 'Amex Auto Purchasing Program',
         description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         selectedPeriod: 'Annual',
 
     },
@@ -404,8 +404,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     }]
@@ -418,8 +418,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -428,8 +428,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     }]
@@ -442,8 +442,8 @@ const allFeatures = [
         img: '../../../src/assets/CarIcon.jpg',
         name: 'Car Rental Loss & Damage Insurance',
         description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-        monthlyAmount: '$20',
-        yearlyAmount: '$200',
+        monthlyAmount: '20',
+        yearlyAmount: '200',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -452,8 +452,8 @@ const allFeatures = [
         img: '../../../src/assets/FirstBagFree.jpg',
         name: 'First Checked Bag Free',
         description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-        monthlyAmount: '$15',
-        yearlyAmount: '$150',
+        monthlyAmount: '15',
+        yearlyAmount: '150',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -462,8 +462,8 @@ const allFeatures = [
         img: '../../../src/assets/PurchaseProtection.jpg',
         name: 'Purchase Protection',
         description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-        monthlyAmount: '$50',
-        yearlyAmount: '$500',
+        monthlyAmount: '50',
+        yearlyAmount: '500',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -472,8 +472,8 @@ const allFeatures = [
         img: '../../../src/assets/TravelAccidentInsurance.jpg',
         name: 'Travel Accident Insurance',
         description: 'Can provide coverage for loss from an injury.',
-        monthlyAmount: '$100',
-        yearlyAmount: '$1000',
+        monthlyAmount: '100',
+        yearlyAmount: '1000',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -482,8 +482,8 @@ const allFeatures = [
         img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
         name: 'No Foreign Transaction Fees',
         description: 'No Foreign Transaction Fees on international purchases',
-        monthlyAmount: '$10',
-        yearlyAmount: '$100',
+        monthlyAmount: '10',
+        yearlyAmount: '100',
         isSelected: 'true',
         selectedPeriod: 'Annual',
 
@@ -492,8 +492,8 @@ const allFeatures = [
         img: '../../../src/assets/Baggage.JPG',
         name: 'Baggage Insurance Plan',
         description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-        monthlyAmount: '$30',
-        yearlyAmount: '$300',
+        monthlyAmount: '30',
+        yearlyAmount: '300',
         isSelected: 'true',
         selectedPeriod: 'Annual',
     }]
@@ -539,10 +539,11 @@ class HomePage extends Component {
 
         //fetch all card service mapping
         this.setState({ loading: true});
+        let networkDataReceived = false;
         axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
-                //console.log(response);
-
+                console.log('From web db ' + response.data[0].benefits);
+                networkDataReceived = true;
                 //to be added service
                 let names = {};
                 _.each(response.data[0].benefits, function (data) { names[data.name] = true; });
@@ -555,9 +556,9 @@ class HomePage extends Component {
                     cardServiceMapping: response.data,
                     includedServices: response.data[0].benefits,
                     toBeAddedServices: toBeAddedVas,
-                    cardName:response.data[0].cardName,
+                    cardName: response.data[0].cardName,
                     loading: false
-                },()=>{this.fetchServices(response.data[0].cardName)});
+                }, () => { this.fetchServices(response.data[0].cardName) });
             })
             .catch(error => {
 
@@ -567,12 +568,53 @@ class HomePage extends Component {
                 });
             });
 
+        if ('indexedDB' in window) {
+            readAKeyData('cardbenefits', 'Platinum')
+                .then(dataBenefits => {
+                    if (!networkDataReceived) {
+                        console.log('From cache', dataBenefits);
+
+                        //filter logic
+                        let names = {};
+                        _.each(dataBenefits[0], function (data) {
+                            names[data.name] = true;
+                        });
+
+                        /* dataBenefits.forEach(function(entry){
+                             entry.childNodes.forEach(function(childrenEntry) { // was missing a )
+                               console.log(childrenEntry.name);
+                             });
+                         });*/
+
+                        let toBeAddedVas = _.filter(allFeatures, function (val) {
+                            return !names[val.name];
+                        }, dataBenefits);
+                        console.log('toBeAddedVas ', toBeAddedVas);
+
+                        this.setState({
+                            cardServiceMapping: dataBenefits[0],
+                            includedServices: dataBenefits[0],
+                            toBeAddedServices: toBeAddedVas,
+                            cardName: 'Platinum',
+                            loading: false
+                        });
+
+                    }
+                });
+
+
+
+
+
+
+        }
     }
 
 
     fetchServices = (titleValue) => {
         let constHighRank ='';
         this.setState({ loading: true });
+        let networkDataReceived = false;
         axiosInstance.get(`-LJu575aGyByO4FqneBZ/recentTransactions/${titleValue}.json`)
             .then(response => {
                 console.log(response);
@@ -604,20 +646,57 @@ class HomePage extends Component {
                 });
             });
 
-        const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
+         //Dynamic Caching --offline
 
-        let names = {};
-        _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
+         if ('indexedDB' in window) {
+            readAKeyData('cardbenefits', titleValue)
+                .then(dataBenefits => {
+                    if (!networkDataReceived) {
+                        console.log('From cache fetch for card ', dataBenefits);
 
-        let toBeAddedVas = _.filter(allFeatures, function (val) {
-            return !names[val.name];
-        }, includedVASData[0].benefits);
+                        //filter logic
+                        let names = {};
+                        _.each(dataBenefits[0], function (data) {
+                            names[data.name] = true;
+                        });
 
-        this.setState({
-            includedServices: includedVASData[0].benefits,
-            toBeAddedServices: toBeAddedVas,
-            cardName:titleValue,
-        });
+
+                        let toBeAddedVas = _.filter(allFeatures, function (val) {
+                            return !names[val.name];
+                        }, dataBenefits);
+                        console.log('toBeAddedVas ', toBeAddedVas);
+
+                        this.setState({
+                            cardServiceMapping: dataBenefits[0],
+                            includedServices: dataBenefits[0],
+                            toBeAddedServices: toBeAddedVas,
+                            cardName: titleValue,
+
+                        });
+
+                    }
+                });
+
+        }else{
+
+            const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
+
+            let names = {};
+            _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
+
+            let toBeAddedVas = _.filter(allFeatures, function (val) {
+                return !names[val.name];
+            }, includedVASData[0].benefits);
+
+            this.setState({
+                includedServices: includedVASData[0].benefits,
+                toBeAddedServices: toBeAddedVas,
+                cardName: titleValue,
+            });
+
+
+        }
+
     }
 
     passDataToFeatures = () => {
@@ -658,7 +737,6 @@ class HomePage extends Component {
 
 
         return (
-
             <Fragment>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>

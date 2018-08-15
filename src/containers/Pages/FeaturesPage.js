@@ -3,12 +3,27 @@ import FeatureSection from '../../containers/FeatureSection/FeatureSection';
 import CardItem from '../../components/CardItem/CardItem';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import classNames from "classnames";
 
-const styles = {
-    items: {
-       
+const styles = theme => ({
+    root: {
+      display: "flex",
+      flexWrap: "wrap",
+      marginLeft:"25%",
+      marginTop:"-5%",
     },
-}
+    margin: {
+      margin: theme.spacing.unit
+    },
+    withoutLabel: {
+      marginTop: theme.spacing.unit * 3
+    },
+    textField: {
+      flexBasis: 200
+    }
+  });
 
 class FeaturesPage extends Component {
     constructor(props) {
@@ -19,6 +34,8 @@ class FeaturesPage extends Component {
             this.state = {
                 alacartArray: props.featuresData.toBeAddedServices,
                 selectedArray: [],
+                totalAmount: 0,
+                totalAmt: 0,
             };
         } else {
             this.state = {
@@ -38,9 +55,17 @@ class FeaturesPage extends Component {
         let temp = this.state.selectedArray;
         this.state.selectedArray.push(item);
         console.log('selectedArray:', this.state.selectedArray);
+        this.state.totalAmt = this.state.totalAmount + item.price;
+        console.log('totalAmt After Add:', this.state.totalAmt);
+        this.setState({
+            ...this.state,
+            totalAmount:this.state.totalAmt,
+        });
     }
     removeItem = (item) => {
         console.log('removeItem:', item);
+        this.state.totalAmt = this.state.totalAmount - item.price;
+        console.log('totalAmount After Remove:', this.state.totalAmount);
         const newArray = [];
         this.state.selectedArray.map(value => {
             if (value.name !== item.name) {
@@ -49,8 +74,10 @@ class FeaturesPage extends Component {
         });
         this.setState({
             selectedArray: newArray,
+            totalAmount: this.state.totalAmt,
           },() => {
             console.log('selectedArray:', this.state.selectedArray);
+            console.log('totalAmount final value:', this.state.totalAmount);
         });
     }
    
@@ -76,6 +103,7 @@ class FeaturesPage extends Component {
                                         selected="false"
                                         selectedPeriod="Monthly"
                                         img={value.img}
+                                        cardName={this.props.featuresData.cardName}
                                         desc={value.description}
                                         add={this.addItem}
                                         remove={this.removeItem}
@@ -86,7 +114,18 @@ class FeaturesPage extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                {this.state.alacartArray !== null && <FeatureSection />}
+                {this.state.alacartArray !== null && <FeatureSection benefitsData={{"cardName":"Gold"}} />}
+                <div className={classes.root}>
+                    <TextField
+                    label="Amount"
+                    id="simple-start-adornment"
+                    value={this.state.totalAmount}
+                    className={classNames(classes.margin, classes.textField)}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start">$</InputAdornment>
+                    }}
+                    />
+                </div>
             </Fragment>
         )
     }

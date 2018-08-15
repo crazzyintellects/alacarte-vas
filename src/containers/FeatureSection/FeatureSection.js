@@ -50,7 +50,7 @@ class CircularIntegration extends React.Component {
     clearTimeout(this.timer);
   }
 
-  handleButtonClick = () => {
+  handleButtonClick = (props) => {
     if (!this.state.loading) {
       this.setState(
         {
@@ -67,7 +67,49 @@ class CircularIntegration extends React.Component {
         }
       );
     }
+    this.saveDataToDatabase(props);
   };
+
+  saveDataToDatabase = (props) => {
+    console.log('Saving Benefits To Database');
+    var databaseInstance = firebaseInstance.database();
+    var benefitNumber = -1;
+    console.log('CardName is : ' + props.benefitsData.cardName);
+    switch(props.benefitsData.cardName){
+      case 'Platinum':
+      benefitNumber = 0;
+      break;
+      case 'Gold':
+      benefitNumber = 1;
+      break;
+      case 'Green':
+      benefitNumber = 2;
+      break;
+      case 'Everyday':
+      benefitNumber = 3;
+      break;
+      case 'Hilton':
+      benefitNumber = 4;
+      break;
+      case 'default':
+      benefitNumber = 0;
+    }
+    var benefitsUrl = '-LJu4D1RTmj_U1MGFR8i/cardbenefits/'+benefitNumber+'/benefits';
+    console.log('Benefits Url is : ' + benefitsUrl);
+    var benefitsUrlJson = '-LJu4D1RTmj_U1MGFR8i/cardbenefits/'+benefitNumber+'/benefits.json';
+    var dataRef = databaseInstance.ref(benefitsUrl);
+    var existingBenefits = axiosInstance.get(benefitsUrlJson)
+       .then(response => {
+         console.log('Existing Benefits fetched from Database : ');
+         console.log(response.data);
+         var arr = response.data;
+         // below data needs to come from previous page
+         var newData = {"description":"Benefit Description 1","img":"","isSelected":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
+         //arr.push(newData);
+         console.log(arr);
+         //dataRef.set(arr);
+       });
+  }
 
   render() {
     const { loading, success } = this.state;
@@ -84,7 +126,7 @@ class CircularIntegration extends React.Component {
             color="primary"
             className={buttonClassname}
             disabled={loading}
-            onClick={this.handleButtonClick}
+            onClick={() => this.handleButtonClick(this.props)}
           >
             Accept terms
           </Button>
@@ -96,684 +138,12 @@ class CircularIntegration extends React.Component {
     );
   }
 }
-
-const saveDataToDatabase = (props) => {
-  console.log('Saving Data To Database');
-  const benefits = {benefits:{description:'New Benefit Added',name:'Benefit 1'}}; 
-  var databaseInstance = firebaseInstance.database();
-  var dataRef = databaseInstance.ref();
-  /*dataRef.push({
-    'benefits': {description:'This is description'},
-   });*/
-   const cardServiceMapping = [
-    {
-        cardName: 'Platinum',
-        benefits: 
-        [{
-            img: '../../../src/assets/CarIcon.jpg',
-            name: 'Car Rental Loss & Damage Insurance',
-            description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/FirstBagFree.jpg',
-            name: 'First Checked Bag Free',
-            description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-            monthlyAmount: '$15',
-            yearlyAmount: '$150',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/PurchaseProtection.jpg',
-            name: 'Purchase Protection',
-            description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-            monthlyAmount: '$50',
-            yearlyAmount: '$500',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/TravelAccidentInsurance.jpg',
-            name: 'Travel Accident Insurance',
-            description: 'Can provide coverage for loss from an injury.',
-            monthlyAmount: '$100',
-            yearlyAmount: '$1000',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
-            name: 'No Foreign Transaction Fees',
-            description: 'No Foreign Transaction Fees on international purchases',
-            monthlyAmount: '$10',
-            yearlyAmount: '$100',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/ExtendedWarranty.jpg',
-            name: 'Extended Warranty',
-            description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/AutoPurchaseProgram.jpg',
-            name: 'Amex Auto Purchasing Program',
-            description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/CompanionCertificateOpen.jpg',
-            name: 'Uber Rides',
-            description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
-            monthlyAmount: '$5',
-            yearlyAmount: '$50',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        },
-        {
-            img: '../../../src/assets/lounge.JPG',
-            name: 'Global Lounge Collection',
-            description: 'Enjoy complimentary access to over 1100 airport lounges across 120 countries.',
-            monthlyAmount: '$40',
-            yearlyAmount: '$400',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        },
-        {
-            img: '../../../src/assets/Boingo.JPG',
-            name: 'Boingo American Express Preferred Plan',
-            description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
-            monthlyAmount: '$3',
-            yearlyAmount: '$30',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        },
-        {
-            img: '../../../src/assets/Baggage.JPG',
-            name: 'Baggage Insurance Plan',
-            description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        }]
-    
-    },
-    {
-        cardName: 'Gold',
-        benefits: 
-        [{
-            img: '../../../src/assets/CarIcon.jpg',
-            name: 'Car Rental Loss & Damage Insurance',
-            description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/FirstBagFree.jpg',
-            name: 'First Checked Bag Free',
-            description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-            monthlyAmount: '$15',
-            yearlyAmount: '$150',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/PurchaseProtection.jpg',
-            name: 'Purchase Protection',
-            description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-            monthlyAmount: '$50',
-            yearlyAmount: '$500',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/TravelAccidentInsurance.jpg',
-            name: 'Travel Accident Insurance',
-            description: 'Can provide coverage for loss from an injury.',
-            monthlyAmount: '$100',
-            yearlyAmount: '$1000',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
-            name: 'No Foreign Transaction Fees',
-            description: 'No Foreign Transaction Fees on international purchases',
-            monthlyAmount: '$10',
-            yearlyAmount: '$100',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/ExtendedWarranty.jpg',
-            name: 'Extended Warranty',
-            description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/AutoPurchaseProgram.jpg',
-            name: 'Amex Auto Purchasing Program',
-            description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/Baggage.JPG',
-            name: 'Baggage Insurance Plan',
-            description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        }]
-    
-    },
-    {
-        cardName: 'Green',
-        benefits: 
-        [{
-            img: '../../../src/assets/CarIcon.jpg',
-            name: 'Car Rental Loss & Damage Insurance',
-            description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/FirstBagFree.jpg',
-            name: 'First Checked Bag Free',
-            description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-            monthlyAmount: '$15',
-            yearlyAmount: '$150',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/PurchaseProtection.jpg',
-            name: 'Purchase Protection',
-            description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-            monthlyAmount: '$50',
-            yearlyAmount: '$500',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
-            name: 'No Foreign Transaction Fees',
-            description: 'No Foreign Transaction Fees on international purchases',
-            monthlyAmount: '$10',
-            yearlyAmount: '$100',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/ExtendedWarranty.jpg',
-            name: 'Extended Warranty',
-            description: 'Can extend the original warranty for up to two extra year for purchases made on your Card',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/AutoPurchaseProgram.jpg',
-            name: 'Amex Auto Purchasing Program',
-            description: 'You could get Guaranteed Savings and earn rewards by using your Card toward the purchase price of your next vehicle',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/Baggage.JPG',
-            name: 'Baggage Insurance Plan',
-            description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        }]
-    
-    },
-    {
-        cardName: 'Everyday',
-        benefits:
-        [{
-            img: '../../../src/assets/CarIcon.jpg',
-            name: 'Car Rental Loss & Damage Insurance',
-            description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/Baggage.JPG',
-            name: 'Baggage Insurance Plan',
-            description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        }]
-    
-    },
-    {
-        cardName: 'Hilton',
-        benefits: 
-        [{
-            img: '../../../src/assets/CarIcon.jpg',
-            name: 'Car Rental Loss & Damage Insurance',
-            description: 'Can provide coverage for theft of or damage to eligible rental vehicles',
-            monthlyAmount: '$20',
-            yearlyAmount: '$200',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/FirstBagFree.jpg',
-            name: 'First Checked Bag Free',
-            description: 'You can check your first bag for free and save up to $50 on a round-trip flight',
-            monthlyAmount: '$15',
-            yearlyAmount: '$150',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/PurchaseProtection.jpg',
-            name: 'Purchase Protection',
-            description: 'Your purchases are covered when they are damaged or stolen for up to 90 days from the purchase date',
-            monthlyAmount: '$50',
-            yearlyAmount: '$500',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/TravelAccidentInsurance.jpg',
-            name: 'Travel Accident Insurance',
-            description: 'Can provide coverage for loss from an injury.',
-            monthlyAmount: '$100',
-            yearlyAmount: '$1000',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/SPG_NoForeignTransFees.jpg',
-            name: 'No Foreign Transaction Fees',
-            description: 'No Foreign Transaction Fees on international purchases',
-            monthlyAmount: '$10',
-            yearlyAmount: '$100',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-    
-        },
-        {
-            img: '../../../src/assets/Baggage.JPG',
-            name: 'Baggage Insurance Plan',
-            description: 'The Baggage Insurance Plan provides benefits for a Covered Person’s damaged, stolen or lost Baggage, whether checked or carry-on',
-            monthlyAmount: '$30',
-            yearlyAmount: '$300',
-            isSelected: 'true',
-            selectedPeriod: 'Annual',
-        }]
-    
-    },
-            
-    ];
-
-    const recentTransactions = {
-      "Everyday" : {
-        "cardName" : "Everyday",
-        "pending" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.370Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Uber",
-            "refId" : 0,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Uber",
-            "refId" : 2,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "air",
-            "merchantName" : "Delta",
-            "refId" : 1,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Walmart",
-            "refId" : 3,
-            "seNum" : "22222"
-          } ]
-        },
-        "posted" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Uber",
-            "refId" : 4,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Uber",
-            "refId" : 5,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "air",
-            "merchantName" : "Frontier Airlines",
-            "refId" : 6,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "hotel",
-            "merchantName" : "Hilton Hotels",
-            "refId" : 7,
-            "seNum" : "22222"
-          } ]
-        }
-      },
-      "Gold" : {
-        "cardName" : "Gold",
-        "pending" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.370Z",
-            "mcc" : "2222",
-            "merchantCategory" : "air",
-            "merchantName" : "KLM AIR",
-            "refId" : 8,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "air",
-            "merchantName" : "LAX AIRPORT Lounge",
-            "refId" : 9,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "MARIOT HOTEL",
-            "refId" : 10,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "rental",
-            "merchantName" : "Hertz",
-            "refId" : 11,
-            "seNum" : "22222"
-          } ]
-        },
-        "posted" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Harmons",
-            "refId" : 12,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Amazon",
-            "refId" : 13,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Target",
-            "refId" : 14,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Jassi Life adventures",
-            "refId" : 15,
-            "seNum" : "22222"
-          } ]
-        }
-      },
-      "Green" : {
-        "cardName" : "Green",
-        "pending" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.370Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Uber",
-            "refId" : 16,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Whole Foods",
-            "refId" : 17,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Samsung stores",
-            "refId" : 18,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "general",
-            "merchantName" : "Walmart",
-            "refId" : 19,
-            "seNum" : "22222"
-          } ]
-        },
-        "posted" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Travel",
-            "merchantName" : "Lyft",
-            "refId" : 20,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "California Pizza",
-            "merchantName" : "general",
-            "refId" : 21,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "air",
-            "merchantName" : "Frontier Airlines",
-            "refId" : 22,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "travel",
-            "merchantName" : "Hilton Hotels",
-            "refId" : 23,
-            "seNum" : "22222"
-          } ]
-        }
-      },
-      "Platinum" : {
-        "cardName" : "Platinum",
-        "pending" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.370Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Travel",
-            "merchantName" : "Uber",
-            "refId" : 24,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Travel",
-            "merchantName" : "Uber",
-            "refId" : 25,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Air",
-            "merchantName" : "Delta",
-            "refId" : 26,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.371Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Grocery",
-            "merchantName" : "Walmart",
-            "refId" : 27,
-            "seNum" : "22222"
-          } ]
-        },
-        "posted" : {
-          "transactions" : [ {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Travel",
-            "merchantName" : "Uber",
-            "refId" : 28,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Travel",
-            "merchantName" : "Uber",
-            "refId" : 29,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Air",
-            "merchantName" : "Frontier Airlines",
-            "refId" : 30,
-            "seNum" : "22222"
-          }, {
-            "amount" : "$ 20.00",
-            "date" : "2018-08-14T10:05:17.368Z",
-            "mcc" : "2222",
-            "merchantCategory" : "Hotels",
-            "merchantName" : "Hilton Hotels",
-            "refId" : 31,
-            "seNum" : "22222"
-          } ]
-        }
-      }
-    }
-    dataRef.push({
-      'recentTransactions': recentTransactions,
-     });
-   /*axiosInstance.post('cardbenefits.json', cardServiceMapping)
-  .then(response => {
-    console.log('Data Inserted in Database');
-  })*/
-}
-
 /*
 openFeatures = () => {
   location.assign('../../features.html');
 };
 */
-function ContainedButtons(props) {
+/*function ContainedButtons(props) {
   const { classes } = props;
   return (
     <div>
@@ -782,8 +152,7 @@ function ContainedButtons(props) {
       </Button>
     </div>
   );
-}
-
+}*/
 CircularIntegration.propTypes = {
   classes: PropTypes.object.isRequired
 };
