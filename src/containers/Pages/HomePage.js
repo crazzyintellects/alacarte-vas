@@ -518,27 +518,35 @@ class HomePage extends Component {
 
         }
     }
-
-    componentDidMount() {
+componentWillUnmount(){
+    this.starCountRef.off();
+}
+    componentWillMount(){
         const currentComponent = this;
         let init = true;
-        const starCountRef = firebaseInstance.database().ref('-LJu575aGyByO4FqneBZ/recentTransactions/Green/pending/transactions/');
-        starCountRef.on('value', function(snapshot) {
-            init = false;const iconNot = true;
+       this.starCountRef = firebaseInstance.database().ref('-LJu575aGyByO4FqneBZ/recentTransactions/Green/pending/transactions/');
+        this.starCountRef.on('value', function(snapshot) {
+           const iconNot = true;
+            let init = false;
 
-            currentComponent.setState({
-                showNotification: !init,
+
+            currentComponent.setState(prevState => ({
+                showNotification: !prevState.showNotification,
                 notificationMsg: 'Share your experience at Jamba Juice with your loved ones.',
                 iconNotification:iconNot,
-            });
-        });
+            }));
+    });
+    }
+
+    componentDidMount() {
+
         //Default data entry
          /*axiosInstance.post('/cardbenefits.json',cardServiceMapping)
          .then(response => console.log(response))
          .catch(error => console.log(error)) */
 
         //fetch all card service mapping
-        this.setState({ loading: true});
+        this.setState({ loading: true, showNotification: false});
         let networkDataReceived = false;
         axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
@@ -633,7 +641,7 @@ class HomePage extends Component {
                     transactionData:response.data,
                     loading: false,
                     showNotification: (constHighRank!== undefined && constHighRank !==''),
-                    notificationMsg: `Based on your usage, checkout these ${constHighRank} related benefits.`,
+                    notificationMsg: `Based on your usage, checkout these "${constHighRank.toUpperCase()}" related benefits.`,
                     iconNotification:false,
                     constHighRank,
 
