@@ -113,7 +113,7 @@ class FeaturesPage extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                {this.state.alacartArray !== null && <FeatureSection selectedArray={this.state.selectedArray} cardName={this.state.cardName} />}
+                {this.state.alacartArray !== null && <FeatureSection selectedArray={this.state.selectedArray} cardName={this.props.featuresData.cardName} />}
                 <div className={classes.root}>
                     <TextField
                     label="Amount"
