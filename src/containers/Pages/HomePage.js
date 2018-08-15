@@ -105,7 +105,7 @@ const allFeatures = [
     },
     {
         img: '../../../src/assets/Boingo.JPG',
-        name: 'Boingo American Express Preferred Plan',
+        name: 'Boingo AMEX Preferred Plan',
         description: 'Receive Wi-Fi access on up to four devices to more than 1,000,000 hotspots worldwide and pay no Wi-Fi roaming fees. ',
         monthlyAmount: '3',
         yearlyAmount: '30',
@@ -518,35 +518,27 @@ class HomePage extends Component {
 
         }
     }
-componentWillUnmount(){
-    this.starCountRef.off();
-}
-    componentWillMount(){
-        const currentComponent = this;
-        let init = true;
-       this.starCountRef = firebaseInstance.database().ref('-LJu575aGyByO4FqneBZ/recentTransactions/Green/pending/transactions/');
-        this.starCountRef.on('value', function(snapshot) {
-           const iconNot = true;
-            let init = false;
-
-
-            currentComponent.setState(prevState => ({
-                showNotification: !prevState.showNotification,
-                notificationMsg: 'Share your experience at Jamba Juice with your loved ones.',
-                iconNotification:iconNot,
-            }));
-    });
-    }
 
     componentDidMount() {
+        const currentComponent = this;
+        let init = true;
+        const starCountRef = firebaseInstance.database().ref('-LJu575aGyByO4FqneBZ/recentTransactions/Green/pending/transactions/');
+        starCountRef.on('value', function(snapshot) {
+            init = false;const iconNot = true;
 
+            currentComponent.setState({
+                showNotification: !init,
+                notificationMsg: 'Share your experience at Jamba Juice with your loved ones.',
+                iconNotification:iconNot,
+            });
+        });
         //Default data entry
          /*axiosInstance.post('/cardbenefits.json',cardServiceMapping)
          .then(response => console.log(response))
          .catch(error => console.log(error)) */
 
         //fetch all card service mapping
-        this.setState({ loading: true, showNotification: false});
+        this.setState({ loading: true});
         let networkDataReceived = false;
         axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
@@ -641,7 +633,7 @@ componentWillUnmount(){
                     transactionData:response.data,
                     loading: false,
                     showNotification: (constHighRank!== undefined && constHighRank !==''),
-                    notificationMsg: `Based on your usage, checkout these "${constHighRank.toUpperCase()}" related benefits.`,
+                    notificationMsg: `Based on your usage, checkout these ${constHighRank} related benefits.`,
                     iconNotification:false,
                     constHighRank,
 
