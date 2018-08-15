@@ -127,10 +127,10 @@ class CardItem extends React.Component {
             });
             const myObject = {
                 name: this.props.itemName,
-                period: this.state.selectedPeriod,
+                selectedPeriod: this.state.selectedPeriod,
                 price: this.state.dispAmt,
                 img: this.props.img,
-                desc: this.state.description,
+                description: this.state.description,
                 cardName: this.props.cardName,
             }
             this.props.remove(myObject);
@@ -140,10 +140,10 @@ class CardItem extends React.Component {
             });
             const myObject = {
                 name: this.props.itemName,
-                period: this.state.selectedPeriod,
+                selectedPeriod: this.state.selectedPeriod,
                 price: this.state.dispAmt,
                 img: this.props.img,
-                desc: this.state.description,
+                description: this.state.description,
                 cardName: this.props.cardName,
             }
             this.props.add(myObject);

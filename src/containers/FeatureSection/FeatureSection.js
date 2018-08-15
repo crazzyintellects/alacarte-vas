@@ -42,13 +42,18 @@ const styles = theme => ({
 class CircularIntegration extends React.Component {
   timer = null;
 
-  state = {
-    loading: false,
+  constructor(props) {
+    super(props);
+        this.state = {
+            selectedArray: props.selectedArray,
+            cardName: props.cardName,
+            loading: false,
     success: false,
     open: false,
     vertical: 'top',
     horizontal: 'right',
-  };
+        }
+    }
 
   componentWillUnmount() {
     clearTimeout(this.timer);
@@ -75,13 +80,18 @@ class CircularIntegration extends React.Component {
   };
 
   saveDataToDatabase = (props) => {
+    var arr = [{"Description":"Description1"}];
+var arr2 = [{"Description":"Description2"}];
+
+arr.concat(arr2);
+console.log(arr);
     console.log('Saving Benefits To Database');
     var databaseInstance = firebaseInstance.database();
     var benefitNumber = -1;
-    console.log('CardName is : ' + props.cardName);
+    console.log('CardName is : ' + this.state.cardName);
     console.log('New Benefits Added');
-    console.log(props.selectedArray);
-    switch(props.cardName){
+    console.log(this.state.selectedArray);
+    switch(this.state.cardName){
       case 'Platinum':
       benefitNumber = 0;
       break;
@@ -110,17 +120,17 @@ class CircularIntegration extends React.Component {
          console.log(response.data);
          var arr = response.data;
          // below data needs to come from previous page
-         var newData = {"description":"Benefit Description 1","img":"","isSelected":true,"monthlyAmount":"$30","name":"New Plan Added","selectedPeriod":"Annual","yearlyAmount":"$300"};
-         //arr.push(newData);
-         console.log(arr);
-         /*dataRef.set(arr).then(response => {
+         var newData = this.state.selectedArray;
+         var latestarr = [...arr,...newData];
+         console.log(latestarr);
+         dataRef.set(latestarr).then(response => {
            console.log('Benefits Saved');
            this.setState(
             {
               success: true,
               loading: false
             });
-         })*/
+         })
        });
   }
 
