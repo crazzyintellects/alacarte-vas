@@ -1,19 +1,20 @@
 
 var dbPromise = idb.open('cardbenefits-store', 1, function (db) {
   if (!db.objectStoreNames.contains('cardbenefits')) {
-    db.createObjectStore('cardbenefits', {keyPath: 'id'});
+   // db.createObjectStore('cardbenefits', {keyPath: 'cardName'});
+   db.createObjectStore('cardbenefits');
   }
   if (!db.objectStoreNames.contains('sync-cardbenefits')) {
-    db.createObjectStore('sync-cardbenefits', {keyPath: 'id'});
+    db.createObjectStore('sync-cardbenefits', {keyPath: 'cardName'});
   }
 });
 
-function writeData(st, data) {
+function writeData(st, key,data ) {
   return dbPromise
     .then(function(db) {
       var tx = db.transaction(st, 'readwrite');
       var store = tx.objectStore(st);
-      store.put(data);
+      store.put(data,key);
       return tx.complete;
     });
 }
@@ -24,6 +25,15 @@ function readAllData(st) {
       var tx = db.transaction(st, 'readonly');
       var store = tx.objectStore(st);
       return store.getAll();
+    });
+}
+
+function readAKeyData(st,key) {
+  return dbPromise
+    .then(function(db) {
+      var tx = db.transaction(st, 'readonly');
+      var store = tx.objectStore(st);
+      return store.getAll(key);
     });
 }
 

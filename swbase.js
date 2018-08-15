@@ -22,8 +22,11 @@ workboxSW.router.registerRoute('https://alacarte-vas.firebaseio.com/-LJu4D1RTmj_
           return clonedRes.json();
         })
         .then(function (data) {
-          for (var key in data) {
-            writeData('cardbenefits', data[key])
+          //console.log("cache data " , data);
+         for (var key in data) {
+            writeData('cardbenefits', data[key].cardName,data[key].benefits);
+            //console.log("data[key].cardName,data[key].benefit " , data[key].cardName,data[key].benefits);
+           //console.log('cardbenefits'  + data[key].cardName + ' ' +  key);
           }
         });
       return res;

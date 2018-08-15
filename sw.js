@@ -22,8 +22,11 @@ workboxSW.router.registerRoute('https://alacarte-vas.firebaseio.com/-LJu4D1RTmj_
           return clonedRes.json();
         })
         .then(function (data) {
-          for (var key in data) {
-            writeData('cardbenefits', data[key])
+          //console.log("cache data " , data);
+         for (var key in data) {
+            writeData('cardbenefits', data[key].cardName,data[key].benefits);
+            //console.log("data[key].cardName,data[key].benefit " , data[key].cardName,data[key].benefits);
+           //console.log('cardbenefits'  + data[key].cardName + ' ' +  key);
           }
         });
       return res;
@@ -33,7 +36,7 @@ workboxSW.router.registerRoute('https://alacarte-vas.firebaseio.com/-LJu4D1RTmj_
 workboxSW.precache([
   {
     "url": "bundle.js",
-    "revision": "50bc072f2843b43c05c10e3c3a35da6c"
+    "revision": "a5a4142a1559daecfadedbf12c47a3e9"
   },
   {
     "url": "src/App.js",
@@ -177,7 +180,7 @@ workboxSW.precache([
   },
   {
     "url": "src/containers/FeatureSection/FeatureSection.js",
-    "revision": "846a7c5f25bfd46d05c46dcfc9a0a24d"
+    "revision": "714a0e2b9d1d31f5e4954053e36849fb"
   },
   {
     "url": "src/containers/Header/HeaderNav.js",
@@ -193,11 +196,11 @@ workboxSW.precache([
   },
   {
     "url": "src/containers/Pages/FeaturesPage.js",
-    "revision": "77209e127c1b4e9bf54f4e617563e327"
+    "revision": "84e3d51e6c1743d1ae1932dfe62cf715"
   },
   {
     "url": "src/containers/Pages/HomePage.js",
-    "revision": "db24df61e2bf63473168e85df9922362"
+    "revision": "8ccc03718a41a91aea1a5ce81b5afe0f"
   },
   {
     "url": "src/containers/Pages/transactions.js",
@@ -221,7 +224,7 @@ workboxSW.precache([
   },
   {
     "url": "src/jsUtilities/utility.js",
-    "revision": "853b0c0a17980b44da3afee0ba4150cb"
+    "revision": "499c99fda9b6b8225c116e37e823e325"
   },
   {
     "url": "sw_init.js",
@@ -229,11 +232,11 @@ workboxSW.precache([
   },
   {
     "url": "sw.js",
-    "revision": "22fa6fd5d296aa1250d2aba4bbd72bb7"
+    "revision": "4f35c10d2e45f74cfe935dc438667be9"
   },
   {
     "url": "swbase.js",
-    "revision": "e19ebc491a47ce8b921433d84e48f1e5"
+    "revision": "933c9a4585552cf45adf880ad0dcba17"
   },
   {
     "url": "workbox-sw.prod.v2.1.3.js",
@@ -241,10 +244,10 @@ workboxSW.precache([
   },
   {
     "url": "index.html",
-    "revision": "e07190f7fef854302a886c03bf0a5290"
+    "revision": "3f56c30ac883dc4c93f134173f622191"
   },
   {
     "url": "public/index.html",
-    "revision": "70f9c3d7621a148913c1ccdd52090afe"
+    "revision": "f4c1ef861316c08352f5ca98bc6223c7"
   }
 ]);

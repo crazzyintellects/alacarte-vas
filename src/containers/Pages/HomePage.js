@@ -519,11 +519,13 @@ class HomePage extends Component {
          .catch(error => console.log(error)) */
 
         //fetch all card service mapping
+        //fetch all card service mapping
         this.setState({ loading: true });
+        let networkDataReceived = false;
         axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
-                //console.log(response);
-
+                console.log('From web db ' + response.data[0].benefits);
+                networkDataReceived = true;
                 //to be added service
                 let names = {};
                 _.each(response.data[0].benefits, function (data) { names[data.name] = true; });
@@ -536,9 +538,9 @@ class HomePage extends Component {
                     cardServiceMapping: response.data,
                     includedServices: response.data[0].benefits,
                     toBeAddedServices: toBeAddedVas,
-                    cardName:response.data[0].cardName,
+                    cardName: response.data[0].cardName,
                     loading: false
-                },()=>{this.fetchServices(response.data[0].cardName)});
+                }, () => { this.fetchServices(response.data[0].cardName) });
             })
             .catch(error => {
 
@@ -548,11 +550,52 @@ class HomePage extends Component {
                 });
             });
 
+        if ('indexedDB' in window) {
+            readAKeyData('cardbenefits', 'Platinum')
+                .then(dataBenefits => {
+                    if (!networkDataReceived) {
+                        console.log('From cache', dataBenefits);
+
+                        //filter logic
+                        let names = {};
+                        _.each(dataBenefits[0], function (data) {
+                            names[data.name] = true;
+                        });
+
+                        /* dataBenefits.forEach(function(entry){ 
+                             entry.childNodes.forEach(function(childrenEntry) { // was missing a )
+                               console.log(childrenEntry.name);
+                             });
+                         });*/
+
+                        let toBeAddedVas = _.filter(allFeatures, function (val) {
+                            return !names[val.name];
+                        }, dataBenefits);
+                        console.log('toBeAddedVas ', toBeAddedVas);
+
+                        this.setState({
+                            cardServiceMapping: dataBenefits[0],
+                            includedServices: dataBenefits[0],
+                            toBeAddedServices: toBeAddedVas,
+                            cardName: 'Platinum',
+                            loading: false
+                        });
+
+                    }
+                });
+
+
+
+
+
+
+        }
     }
 
 
     fetchServices = (titleValue) => {
         this.setState({ loading: true });
+        let networkDataReceived = false;
         axiosInstance.get(`-LJu575aGyByO4FqneBZ/recentTransactions/${titleValue}.json`)
             .then(response => {
                 console.log(response);
@@ -579,20 +622,57 @@ class HomePage extends Component {
                 });
             });
 
-        const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
+         //Dynamic Caching --offline
 
-        let names = {};
-        _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
+         if ('indexedDB' in window) {
+            readAKeyData('cardbenefits', titleValue)
+                .then(dataBenefits => {
+                    if (!networkDataReceived) {
+                        console.log('From cache fetch for card ', dataBenefits);
 
-        let toBeAddedVas = _.filter(allFeatures, function (val) {
-            return !names[val.name];
-        }, includedVASData[0].benefits);
+                        //filter logic
+                        let names = {};
+                        _.each(dataBenefits[0], function (data) {
+                            names[data.name] = true;
+                        });
 
-        this.setState({
-            includedServices: includedVASData[0].benefits,
-            toBeAddedServices: toBeAddedVas,
-            cardName:titleValue,
-        });
+                       
+                        let toBeAddedVas = _.filter(allFeatures, function (val) {
+                            return !names[val.name];
+                        }, dataBenefits);
+                        console.log('toBeAddedVas ', toBeAddedVas);
+
+                        this.setState({
+                            cardServiceMapping: dataBenefits[0],
+                            includedServices: dataBenefits[0],
+                            toBeAddedServices: toBeAddedVas,
+                            cardName: titleValue,
+
+                        });
+
+                    }
+                });
+
+        }else{
+
+            const includedVASData = _.filter(this.state.cardServiceMapping, function (cardServices) { return cardServices.cardName === titleValue; });
+
+            let names = {};
+            _.each(includedVASData[0].benefits, function (data) { names[data.name] = true; });
+    
+            let toBeAddedVas = _.filter(allFeatures, function (val) {
+                return !names[val.name];
+            }, includedVASData[0].benefits);
+    
+            this.setState({
+                includedServices: includedVASData[0].benefits,
+                toBeAddedServices: toBeAddedVas,
+                cardName: titleValue,
+            });
+
+
+        }
+
     }
 
     passDataToFeatures = () => {
