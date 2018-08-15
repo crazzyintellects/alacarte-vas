@@ -107,6 +107,9 @@ class CardItem extends React.Component {
     };
     handleChange = name => event => {
         console.log('clicked: changedPeriod:', event.target.value);
+        if (this.state.selected) {
+            this.changedSelection();
+        }
         if (event.target.value === 'Annual') {
             this.setState({
                 selectedPeriod: 'Annual',
