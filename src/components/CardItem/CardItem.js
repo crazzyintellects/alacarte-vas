@@ -21,6 +21,11 @@ import Grid from '@material-ui/core/Grid';
 
 
 const styles = {
+    smItem: {
+        width: 200,
+        height: 220,
+        padding: 0,
+    },
     item: {
         width: 350,
         height: 75,
@@ -30,7 +35,19 @@ const styles = {
        padding: 4,
        maxHeight: 24,
     },
+    smTitle: {
+        padding: 8,
+        maxHeight: 24,
+        marginTop: -30,
+     },
     img: {
+        width: 175,
+        height: 75,
+        marginTop: 2,
+        marginLeft: 5,
+        marginBottom: -3,
+    },
+    smImg: {
         width: 175,
         height: 75,
         marginTop: 2,
@@ -45,7 +62,7 @@ class CardItem extends React.Component {
 
     }
     componentDidMount() {
-        console.log('itemLevelProps: ', this.props);
+        //console.log('itemLevelProps: ', this.props);
         let selected = false;
         if (this.props.selected === 'true') {
             selected = true;
@@ -63,14 +80,30 @@ class CardItem extends React.Component {
                 periodIdx: 2,
             });
         }
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize)
     }
-
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
     state = {
         dispAmt: '0.00',
         selected: false,
         selectedPeriod: this.props.selectedPeriod,
         description: this.props.desc,
         periodIdx: 1,
+        mobile: false,
+    };
+    handleResize = () => {
+        const height = window.innerHeight;
+        const width = window.innerWidth
+        // this.setState({width: width, height: height});
+        console.log('width:', width, '  height:', height);
+        let mobileDetected = false;
+        if (width < 612) mobileDetected = true;
+        this.setState({
+            mobile: mobileDetected,
+        });
     };
     handleChange = name => event => {
         console.log('clicked: changedPeriod:', event.target.value);
@@ -119,52 +152,105 @@ class CardItem extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.item}>
-                <br />
-                <Typography variant="caption" component="h5">
-                    Ala-A-Cart Item
-                </Typography>
-                <Card  >
-                    <Grid container spacing={24} alignItems="stretch" >
-                        <Grid item sm container>
-                            <Grid item container direction="column" alignItems="center" spacing={16} >
-                                <Grid item >
-                                    <Typography className={classes.title} gutterBottom variant="subheading" component="h5">
-                                        {this.props.itemName}
-                                    </Typography>
-                                </Grid>
-                                <Grid item >
-                                    <Grid container direction="row" justify="center" alignItems="flex-end" spacing={0} >
-                                        <Grid item >
-                                            <NativeSelect
-                                                value={this.state.selectedPeriod}
-                                                name='selectedPeriod'
-                                                onChange={this.handleChange('selectedPeriod')}
-                                            >
-                                                <option value={'Monthly'}>Monthly</option>
-                                                <option value={'Annual'}>Annual</option>
-                                            </NativeSelect>
+            <div>
+                {this.state.mobile === false &&
+                <div className={classes.item}>
+                    <br />
+                    <Typography variant="caption" component="h5">
+                        Ala-A-Cart Item
+                    </Typography>
+                    <Card  >
+                        <Grid container spacing={24} alignItems="stretch" >
+                            <Grid item sm container>
+                                <Grid item container direction="column" alignItems="center" spacing={16} >
+                                    <Grid item >
+                                        <Typography className={classes.title} gutterBottom variant="subheading" component="h5">
+                                            {this.props.itemName}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item >
+                                        <Grid container direction="row" justify="center" alignItems="flex-end" spacing={0} >
+                                            <Grid item >
+                                                <NativeSelect
+                                                    value={this.state.selectedPeriod}
+                                                    name='selectedPeriod'
+                                                    onChange={this.handleChange('selectedPeriod')}
+                                                >
+                                                    <option value={'Monthly'}>Monthly</option>
+                                                    <option value={'Annual'}>Annual</option>
+                                                </NativeSelect>
+                                            </Grid>
+                                            <Grid item  >
+                                                <Typography gutterBottom variant="subheading" component="h5">
+                                                    ${this.state.dispAmt}
+                                                </Typography>
+                                            </Grid>
                                         </Grid>
-                                        <Grid item  >
-                                            <Typography gutterBottom variant="subheading" component="h5">
-                                                ${this.state.dispAmt}
+                                    </Grid>
+                                </Grid>
+                                <Grid item xs={1} container direction="column" spacing={16} >
+                                    <Checkbox color="primary" checked={this.state.selected} onClick={this.changedSelection} />
+                                </Grid>
+                            </Grid>
+                            <Grid item onClick={this.changedSelection} >
+                                <Grid container >
+                                    <img className={classes.img} src={this.props.img} />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Card>
+                    <br />
+                </div>}
+                {this.state.mobile === true &&
+                <div className={classes.smItem}>
+                    <br />
+                    <Typography variant="caption" component="h5">
+                        Ala-A-Cart Item 
+                    </Typography>
+                    <Card  >
+                        <Grid container spacing={24} alignItems="stretch" >
+                            <Grid item container direction="column" alignItems="center" spacing={16} >
+                                <Grid item onClick={this.changedSelection} >
+                                    <Grid container >
+                                        <img className={classes.img} src={this.props.img} />
+                                    </Grid>
+                                </Grid>
+                                <Grid item container alignItems="flex-start" >
+                                    <Checkbox color="primary" checked={this.state.selected} onClick={this.changedSelection} />
+                                </Grid>
+                                <Grid item sm container alignItems="center" >
+                                    <Grid item container direction="column"  spacing={16} >
+                                        <Grid item >
+                                            <Typography className={classes.smTitle} gutterBottom variant="subheading" component="h5">
+                                                {this.props.itemName}
                                             </Typography>
+                                        </Grid>
+                                        <Grid item >
+                                            <Grid container direction="row" justify="center" alignItems="flex-end" spacing={0} >
+                                                <Grid item >
+                                                    <NativeSelect
+                                                        value={this.state.selectedPeriod}
+                                                        name='selectedPeriod'
+                                                        onChange={this.handleChange('selectedPeriod')}
+                                                    >
+                                                        <option value={'Monthly'}>Monthly</option>
+                                                        <option value={'Annual'}>Annual</option>
+                                                    </NativeSelect>
+                                                </Grid>
+                                                <Grid item  >
+                                                    <Typography gutterBottom variant="subheading" component="h5">
+                                                        ${this.state.dispAmt}
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={1} container direction="column" spacing={16} >
-                                <Checkbox color="primary" checked={this.state.selected} onClick={this.changedSelection} />
-                            </Grid>
                         </Grid>
-                        <Grid item onClick={this.changedSelection} >
-                            <Grid container >
-                                <img className={classes.img} src={this.props.img} />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Card>
-                <br />
+                    </Card>
+                    <br />
+                </div>}
             </div>
         );
     }
