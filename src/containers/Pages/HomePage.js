@@ -7,7 +7,11 @@ import _ from 'underscore';
 import axiosInstance from '../../axiosInstance';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Transactions from '../../components/PaymentDetails/tabs';
-import { rankMap } from './dynamicNotifications';
+import { rankMap, highestRankedCategory } from './dynamicNotifications';
+import NotificationBar from '../../components/notifications/notifications';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import firebaseInstance from '../../firebaseInstance'
+
 
 
 
@@ -87,7 +91,7 @@ const allFeatures = [
         description: 'Enjoy Uber VIP status and $15 in Uber credits for U.S. rides each month, plus a bonus $20 in December.',
         monthlyAmount: '$5',
         yearlyAmount: '$50',
-        category: 'air',
+        category: 'travel',
 
     },
     {
@@ -123,7 +127,7 @@ const allFeatures = [
         description: 'Receive double points on all airbnb bookings',
         monthlyAmount: '$20',
         yearlyAmount: '$200',
-        category: 'hotels',
+        category: 'travel',
 
     },
     {
@@ -508,18 +512,33 @@ class HomePage extends Component {
             includedServices: null,
             toBeAddedServices: null,
             cardName:'',
+            showNotification: false,
+            notificationMsg: '',
+            iconNotification:false,
+
         }
     }
 
     componentDidMount() {
+        const currentComponent = this;
+        let init = true;
+        const starCountRef = firebaseInstance.database().ref('-LJu575aGyByO4FqneBZ/recentTransactions/Green/pending/transactions/');
+        starCountRef.on('value', function(snapshot) {
+            init = false;const iconNot = true;
 
+            currentComponent.setState({
+                showNotification: !init,
+                notificationMsg: 'Share your experience at Jamba Juice with your loved ones.',
+                iconNotification:iconNot,
+            });
+        });
         //Default data entry
          /*axiosInstance.post('/cardbenefits.json',cardServiceMapping)
          .then(response => console.log(response))
          .catch(error => console.log(error)) */
 
         //fetch all card service mapping
-        this.setState({ loading: true });
+        this.setState({ loading: true});
         axiosInstance.get('-LJu4D1RTmj_U1MGFR8i/cardbenefits.json')
             .then(response => {
                 //console.log(response);
@@ -552,12 +571,13 @@ class HomePage extends Component {
 
 
     fetchServices = (titleValue) => {
+        let constHighRank ='';
         this.setState({ loading: true });
         axiosInstance.get(`-LJu575aGyByO4FqneBZ/recentTransactions/${titleValue}.json`)
             .then(response => {
                 console.log(response);
                 console.log(rankMap(response.data.pending.transactions))
-
+                constHighRank = highestRankedCategory(rankMap([...response.data.pending.transactions,...response.data.posted.transactions]));
                 //to be added service
                 //let names = {};
               //  _.each(response.data[0].benefits, function (data) { names[data.name] = true; });
@@ -568,7 +588,12 @@ class HomePage extends Component {
 
                 this.setState({
                     transactionData:response.data,
-                    loading: false
+                    loading: false,
+                    showNotification: (constHighRank!== undefined && constHighRank !==''),
+                    notificationMsg: `Based on your usage, checkout these ${constHighRank} related benefits.`,
+                    iconNotification:false,
+                    constHighRank,
+
                 });
             })
             .catch(error => {
@@ -605,7 +630,11 @@ class HomePage extends Component {
 
 
     }
-
+    handleClickAway = () => {
+        this.setState({
+            showNotification: false,
+        });
+    };
 
 
 
@@ -615,7 +644,7 @@ class HomePage extends Component {
         let cardToBEservices = null;
         if (this.state.cardServiceMapping) {
             cardInclServices = <IncludedVAS data={this.state.includedServices} />;
-            cardToBEservices = <ToBeAddedVAS data={this.state.toBeAddedServices} includedVAS={this.state.includedServices}
+            cardToBEservices = <ToBeAddedVAS data={this.state.toBeAddedServices} highRankCat={this.state.constHighRank} includedVAS={this.state.includedServices}
              cardName={this.state.cardName}
              callToParent={this.passDataToFeatures}
             />;
@@ -629,6 +658,7 @@ class HomePage extends Component {
 
 
         return (
+
             <Fragment>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
@@ -642,6 +672,12 @@ class HomePage extends Component {
                     </Grid>
                     <Grid item xs={12}>
                         <Transactions transactionData={this.state.transactionData}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <ClickAwayListener onClickAway={this.handleClickAway}>
+                        <NotificationBar open={this.state.showNotification} iconNotification={this.state.iconNotification} data={this.state.notificationMsg} />
+                        </ClickAwayListener>
+
                     </Grid>
 
                 </Grid>

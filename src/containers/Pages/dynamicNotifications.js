@@ -1,7 +1,7 @@
 export const rankMap = (data) => {
     let categoryRankMap = new Map();
     let categorySet = new Set();
-    for(obj of data)
+    for(let obj of data)
     {
         categorySet.add(obj.merchantCategory);
     }
@@ -18,6 +18,9 @@ export const rankMap = (data) => {
     let found = data.find( (element,category)=> {
         return element.merchantCategory === category;
     });*/
+    return sums;
 }
 
-
+export const highestRankedCategory = (obj) => {
+    return Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
+}

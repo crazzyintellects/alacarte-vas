@@ -80,7 +80,27 @@ const buttonClickHandler = (props) => {
 
 const ToBeAddedVAS = (props) => {
     const { classes } = props;
-    const toBeAddedVASData = props.data;
+    const { highRankCat } = props;
+
+    const toBeAddedVASData = props.data.sort(function(a, b) {
+        if(a.category === b.category && a.category === highRankCat)
+        {
+            return 0;
+        }
+        if(a.category === b.category && a.category !== highRankCat)
+        {
+            return 1;
+        }
+        if(a.category !== b.category && a.category === highRankCat && b.category !== highRankCat)
+        {
+            return -1;
+        }
+        if(a.category !== b.category && a.category !== highRankCat && b.category === highRankCat)
+        {
+            return 1;
+        }
+
+    });
     //console.log(props);
     
     return (
