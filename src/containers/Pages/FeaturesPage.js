@@ -34,8 +34,6 @@ class FeaturesPage extends Component {
             this.state = {
                 alacartArray: props.featuresData.toBeAddedServices,
                 selectedArray: [],
-                totalAmount: 0,
-                totalAmt: 0,
             };
         } else {
             this.state = {
@@ -52,20 +50,21 @@ class FeaturesPage extends Component {
 
     addItem = (item) => {
         console.log('addItem:', item);
-        let temp = this.state.selectedArray;
-        this.state.selectedArray.push(item);
-        console.log('selectedArray:', this.state.selectedArray);
-        this.state.totalAmt = this.state.totalAmount + item.price;
-        console.log('totalAmt After Add:', this.state.totalAmt);
+        const temp = Object.assign(this.state.selectedArray,{});
+        temp.push(item);
+        console.log('selectedArray:', temp);
+        let totalAmount= isNaN((this.state.totalAmount*1))?0:(this.state.totalAmount*1);
+        totalAmount = totalAmount+(item.price*1);
+        console.log('totalAmt After Add:', totalAmount);
         this.setState({
-            ...this.state,
-            totalAmount:this.state.totalAmt,
+            selectedArray: temp,
+            totalAmount,
         });
     }
     removeItem = (item) => {
         console.log('removeItem:', item);
-        this.state.totalAmt = this.state.totalAmount - item.price;
-        console.log('totalAmount After Remove:', this.state.totalAmount);
+        const totalAmount = (this.state.totalAmount*1) - (item.price*1);
+        console.log('totalAmount After Remove:', totalAmount);
         const newArray = [];
         this.state.selectedArray.map(value => {
             if (value.name !== item.name) {
@@ -74,10 +73,10 @@ class FeaturesPage extends Component {
         });
         this.setState({
             selectedArray: newArray,
-            totalAmount: this.state.totalAmt,
+            totalAmount,
           },() => {
             console.log('selectedArray:', this.state.selectedArray);
-            console.log('totalAmount final value:', this.state.totalAmount);
+            console.log('totalAmount final value:', totalAmount);
         });
     }
    
@@ -114,7 +113,7 @@ class FeaturesPage extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                {this.state.alacartArray !== null && <FeatureSection benefitsData={{"cardName":"Gold"}} />}
+                {this.state.alacartArray !== null && <FeatureSection selectedArray={this.state.selectedArray} cardName={this.state.cardName} />}
                 <div className={classes.root}>
                     <TextField
                     label="Amount"
